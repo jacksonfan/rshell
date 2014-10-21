@@ -14,7 +14,11 @@ Author and Contributors
 
 Mike Izbicki
 
+Taeyoung Kim
+
 Jackson Fan
+
+Various users on Stackoverflow
 
 File List
 ------
@@ -32,4 +36,14 @@ README.md
 BUGS
 ===
 
-Will add when actual code is made
+* && and ; symbols are recognized in exactly the same way
+* || has not been implemented
+* Does not use 'exit()' to exit from function
+* # symbol has not been implemented
+* Has an upper limit of 50 commands
+* Each token has an upper limit size of 100 characters
+* Uses 3d(?) array as a container, causes readability and efficiency issues
+
+Will add as more are found
+
+

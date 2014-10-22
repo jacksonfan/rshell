@@ -3,7 +3,13 @@ opt = "-Wall -Werror -ansi -pedantic"
 compiler = "g++"
 
 all:
-	$(compiler) $(opt)
+	rshell
 
 rshell:
-	$(compiler) $(opt)
+	[ ! -d bin ];
+	then mkdir bin; 
+	fi
+	$(compiler) $(opt) src/main.cpp -o ./bin/rshell
+
+clean:
+	rm bin/*.o bin/rshell.out

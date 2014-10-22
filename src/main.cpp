@@ -131,6 +131,12 @@ int main()
 	char* login = '\0';
 	size_t hostLength = 500;	//Largest hostname allowed = 100 bytes
 	//int useOR = 0;
+	memset(checkComment, 0, 500);
+	memset(hostname, 0, 500);
+	memset(checkOR, 0, 500);
+	memset(argv1, 0, 500);
+	memset(userinput, 0, 500); //Set all to 0 for fresh input
+	memset(argv, 0, 500);
 	do
 	{
 		loginInfo(login, hostname, hostLength);
@@ -181,7 +187,9 @@ int main()
 				break;
 			}*/
 		}
-			
+		memset(checkComment, 0, 500);
+		memset(hostname, 0, 500);
+		memset(checkOR, 0, 500);
 		memset(argv1, 0, 500);
 		memset(userinput, 0, 500); //Set all to 0 for fresh input
 		memset(argv, 0, 500);	   //Set all to 0 for fresh args

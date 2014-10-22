@@ -1,0 +1,304 @@
+Script started on Tue 21 Oct 2014 11:48:55 PM PDT
+]0;jackson@jlaptop: ~/Repos/rshell/srcjackson@jlaptop:~/Repos/rshell/src$ ./a.[K[K[K[Kg++ main[K[K[K[K-Wall -Weeor[K[K[Krror -ansi -pedna[K[Kantic main.cpp
+]0;jackson@jlaptop: ~/Repos/rshell/srcjackson@jlaptop:~/Repos/rshell/src$ ./a.out
+Initializing RSHELL
+jackson@jlaptop$ ls
+a.out  exec  main.cpp  main.cpp~
+jackson@jlaptop$ ls -a
+.  ..  a.out  exec  main.cpp  main.cpp~
+jackson@jlaptop$ pwd
+/home/jackson/Repos/rshell/src
+jackson@jlaptop$ mkdir hello
+jackson@jlaptop$ ls -a
+.  ..  a.out  exec  hello  main.cpp  main.cpp~
+jackson@jlaptop$ rmdir hello
+jackson@jlaptop$ ls -a
+.  ..  a.out  exec  main.cpp  main.cpp~
+jackson@jlaptop$ ls &&   ls && lss     
+a.out  exec  main.cpp  main.cpp~
+a.out  exec  main.cpp  main.cpp~
+a.out  exec  main.cpp  main.cpp~
+jackson@jlaptop$ ls  ;ls   ls
+a.out  exec  main.cpp  main.cpp~
+a.out  exec  main.cpp  main.cpp~
+jackson@jlaptop$ ls  pwd; lwd
+/home/jackson/Repos/rshell/src
+An error has occured with execvp: No such file or directory
+jackson@jlaptop$ pwd  ; pwd;pwd;pwd                   ;pwd
+/home/jackson/Repos/rshell/src
+/home/jackson/Repos/rshell/src
+/home/jackson/Repos/rshell/src
+/home/jackson/Repos/rshell/src
+/home/jackson/Repos/rshell/src
+jackson@jlaptop$ ls -a -l  
+total 40
+drwxrwxr-x 2 jackson jackson  4096 Oct 21 23:49 .
+drwxrwxr-x 5 jackson jackson  4096 Oct 21 23:38 ..
+-rwxrwxr-x 1 jackson jackson 14312 Oct 21 23:49 a.out
+-rw-rw-r-- 1 jackson jackson     0 Oct 21 23:48 exec
+-rw-rw-r-- 1 jackson jackson  4550 Oct 21 23:47 main.cpp
+-rw-rw-r-- 1 jackson jackson  4277 Oct 21 23:27 main.cpp~
+jackson@jlaptop$ ls -a -l -p -hello ----
+ls: invalid option -- 'e'
+Try 'ls --help' for more information.
+jackson@jlaptop$ ls ----------
+ls: unrecognized option '----------'
+Try 'ls --help' for more information.
+jackson@jlaptop$ ls #This is a command
+a.out  exec  main.cpp  main.cpp~
+jackson@jlaptop$ ls || echo hello #This i w will only print out hel                  print out hello (bug)
+hello
+jackson@jlaptop$ ls &  ls     #T Also bug here. Recgo  ognizes & ads  s  n and &&) 
+a.out  exec  main.cpp  main.cpp~
+a.out  exec  main.cpp  main.cpp~
+jackson@jlaptop$ pwd pwd pwdp    pwd 
+pwd: ignoring non-option arguments
+/home/jackson/Repos/rshell/src
+jackson@jlaptop$ ls  ls
+a.out  exec  main.cpp  main.cpp~
+jackson@jlaptop$ cd ..
+An error has occured with execvp: No such file or directory
+jackson@jlaptop$ ./a.out
+Initializing RSHELL
+jackson@jlaptop$ ./a.out
+Initializing RSHELL
+jackson@jlaptop$ ./a.out
+Initializing RSHELL
+jackson@jlaptop$ ls
+a.out  exec  main.cpp  main.cpp~
+jackson@jlaptop$ vim main.cpp
+[?1049h[?1h=[2;1H▽[6n[1;1H  [1;1H[1;24r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[24;1H"main.cpp" 210L, 4550C[>c[1;1H[35m#include [m[31m<iostream>[m
+[35m#include [m[31m<unistd.h>[m
+[35m#include [m[31m<stdio.h>[m
+[35m#include [m[31m<errno.h>[m
+[35m#include [m[31m<sys/types.h>[m
+[35m#include [m[31m<sys/wait.h>[m
+[35m#include [m[31m<string>[m
+[35m#include [m[31m<string.h>[m
+[35m#include [m[31m<stdlib.h>[m
+[35m#include [m[31m<pwd.h>[m
+
+[33musing[m [32mnamespace[m std;
+
+[32mvoid[m loginInfo([32mchar[m*& login, [32mchar[m*& hostname, [32msize_t[m& hostLength)
+{[16;9Hpasswd* loginDetails = getpwuid(getuid());[17;9Hlogin = loginDetails->pw_name;[18;9H[32mint[m gethost = gethostname(hostname, hostLength);[19;9H[33mif[m (gethost == -[31m1[m)[20;9H{[21;17Hperror([31m"Error retrieving hostname"[m);[22;17Hexit([31m1[m);[23;9H}[24;63H1,1[11CTop[1;1H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[24;53H:[1;1H[24;1H[K[24;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h[?25l"main.cpp" 210L, 4550C written
+[?1l>[?12l[?25h[?1049ljackson@jlaptop$ cat main.cpp
+#include <iostream>
+#include <unistd.h>
+#include <stdio.h>
+#include <errno.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <string>
+#include <string.h>
+#include <stdlib.h>
+#include <pwd.h>
+
+using namespace std;
+
+void loginInfo(char*& login, char*& hostname, size_t& hostLength)
+{
+	passwd* loginDetails = getpwuid(getuid());
+	login = loginDetails->pw_name;
+	int gethost = gethostname(hostname, hostLength);
+	if (gethost == -1)
+	{
+		perror("Error retrieving hostname");
+		exit(1);
+	}
+	if (login == NULL)
+	{
+		perror("Failed to retrieve login ID");
+		exit(1);
+	}
+}
+
+void parseSpace (char* userinput, char** argv)
+{
+	char delims [] = " ";
+	char* token = strtok(userinput, delims);
+	for (int i = 0; token != NULL; i++)
+	{
+		argv[i] = token;
+		token = strtok(NULL, delims);
+	}
+}
+
+void parseSemiAND (char* userinput, char** argv)
+{
+	char delims [] = ";&";
+	char* token = strtok(userinput, delims);
+	for (int i = 0; token != NULL; i++)
+	{
+		argv[i] = token;
+		token = strtok(NULL, delims);
+	}
+}
+
+void parseComment (char* userinput, char** argv)
+{
+	char delims [] = "#";
+	char* token = strtok(userinput, delims);
+	for (int i = 0; token != NULL; i++)
+	{
+		argv[i] = token;
+		token = strtok(NULL, delims);
+	}
+}
+
+void parseOR (char* userinput, char** argv)
+{
+	char delims [] = "|";
+	char* token = strtok(userinput, delims);
+	for (int i = 0; token != NULL; i++)
+	{
+		argv[i] = token;
+		token = strtok(NULL, delims);
+	}
+}
+
+void parseAND (char* userinput, char** argv)
+{
+	char delims [] = "&";
+	char* token = strtok(userinput, delims);
+	for (int i = 0; token != NULL; i++)
+	{
+		argv[i] = token;
+		token = strtok(NULL, delims);
+	}
+}
+
+void isExit(char* input)
+{
+	if (strcmp(input, "exit") == 0)
+	{
+		exit(0);
+	}
+}
+
+//int 
+void checkFork(int pid, char** argv)
+{
+	if (pid == -1)	//Detects for error in fork
+	{
+		perror("An error has occurred with fork");
+		exit(1);
+	}
+	else if (pid == 0)	//This is the child process
+	{
+		execvp(argv[0], argv);
+		perror("An error has occured with execvp");
+		exit(1);
+	}
+	else if (pid > 0)	//This is the parent process
+	{
+		if (wait(NULL) == -1)	//Checks for error
+		{				//In waitpid
+			perror("An error has occurred with waitpid");
+			exit(1);
+		}
+	}
+	//return 0;
+}
+
+int main()
+{
+	
+	cout << "Initializing RSHELL" << endl;
+	char*** argv1 = new char**[500]; //Container holding all char** lists of commands
+	//char*** storeOR = new char**[50];
+	char** argv = new char*[500];	//Maximum commands allowed = 50
+	char** checkComment = new char*[500]; //Used for parsing if there's a comment
+	char** checkOR = new char*[500];
+	char* hostname = new char[500];	//Largest hostname allowed = 100 chars
+	char* userinput = new char [500];//Largest input allowed = 200 chars 
+	//char* copyOfInput = '\0';
+	char* login = '\0';
+	size_t hostLength = 500;	//Largest hostname allowed = 100 bytes
+	//int useOR = 0;
+	memset(checkComment, 0, 500);
+	memset(hostname, 0, 500);
+	memset(checkOR, 0, 500);
+	memset(argv1, 0, 500);
+	memset(userinput, 0, 500); //Set all to 0 for fresh input
+	memset(argv, 0, 500);
+	do
+	{
+		loginInfo(login, hostname, hostLength);
+		int forkID = 0;
+		cout << login << "@" << hostname << "$ ";
+		cin.getline(userinput, 500, '\n');
+		parseComment(userinput, checkComment);
+		//copyOfInput = strdup(checkComment[0]);	
+		parseOR(checkComment[0], checkOR);
+		/*if (copyOfInput != checkOR[0])
+		{
+			for (int i = 0; checkOR[i] != NULL; i++)
+			{
+				storeOR[i] = new char*[50];
+				parseSemiAND(checkOR[i], storeOR[i]);
+			}
+			for (int i = 0; storeOR[i] != NULL; i++)
+			{
+				for (int j = 0; (storeOR[i])[j] != NULL; j++)
+				{
+					argv1[i] = new char*[50];
+					parseSpace((storeOR[i])[j], argv1[i]);
+				}
+			}
+			useOR++;
+		}
+		else 
+		{*/
+		for (int i = 0; checkOR[i] != NULL; i++)
+		{
+			parseSemiAND(checkOR[i], argv);
+		}
+		for (int i = 0; argv[i] != NULL; i++)
+		{
+			argv1[i] = new char*[500];
+			parseSpace(argv[i], argv1[i]);
+		}
+
+		//}
+		for (int i = 0; argv1[i] != NULL; i++)
+		{
+			isExit(argv1[i][0]); 
+			forkID = fork();
+			//int success = 
+			checkFork(forkID, argv1[i]);
+			/*if (success == 0 && useOR == 1) // Exit with error
+			{
+				break;
+			}*/
+		}
+		memset(checkComment, 0, 500);
+		memset(hostname, 0, 500);
+		memset(checkOR, 0, 500);
+		memset(argv1, 0, 500);
+		memset(userinput, 0, 500); //Set all to 0 for fresh input
+		memset(argv, 0, 500);	   //Set all to 0 for fresh args
+	} while (true);
+
+	for (int i = 0; argv1[i] != NULL; i++)
+	{
+		delete [] argv1[i];
+	}
+	delete [] checkComment;
+	delete [] hostname;
+	delete [] userinput;
+	delete [] argv;
+	delete [] argv1;
+	delete [] checkOR;
+
+	return 0;
+}
+jackson@jlaptop$ clear
+[H[2Jjackson@jlaptop$ exit
+jackson@jlaptop$ exit
+jackson@jlaptop$ exit
+jackson@jlaptop$ exit
+]0;jackson@jlaptop: ~/Repos/rshell/srcjackson@jlaptop:~/Repos/rshell/src$ exit
+exit
+
+Script done on Tue 21 Oct 2014 11:52:01 PM PDT

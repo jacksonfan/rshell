@@ -50,9 +50,20 @@ void parseSemiAND (char* userinput, char** argv)
 	}
 }
 
+void parseComment (char* userinput, char** argv)
+{
+	char delims [] = "#";
+	char* token = strtok(userinput, delims);
+	for (int i = 0; token != NULL; i++)
+	{
+		argv[i] = token;
+		token = strtok(NULL, delims);
+	}
+}
+
 void parseOR (char* userinput, char** argv)
 {
-	char delims [] = "||";
+	char delims [] = "|";
 	char* token = strtok(userinput, delims);
 	for (int i = 0; token != NULL; i++)
 	{
@@ -63,7 +74,7 @@ void parseOR (char* userinput, char** argv)
 
 void parseAND (char* userinput, char** argv)
 {
-	char delims [] = "&&";
+	char delims [] = "&";
 	char* token = strtok(userinput, delims);
 	for (int i = 0; token != NULL; i++)
 	{
@@ -72,14 +83,15 @@ void parseAND (char* userinput, char** argv)
 	}
 }
 
-/*void isExit(char* input)
+void isExit(char* input)
 {
 	if (strcmp(input, "exit") == 0)
 	{
 		exit(0);
 	}
-}*/
+}
 
+//int 
 void checkFork(int pid, char** argv)
 {
 	if (pid == -1)	//Detects for error in fork
@@ -101,61 +113,90 @@ void checkFork(int pid, char** argv)
 			exit(1);
 		}
 	}
+	//return 0;
 }
 
 int main()
 {
 	
 	cout << "Initializing RSHELL" << endl;
-	char*** argv1 = new char**[50];
-	char** argv = new char*[50];	//Maximum commands allowed = 50
-	char* hostname = new char[100];	//Largest hostname allowed = 100 chars
-	char* userinput = new char[200];//Largest input allowed = 200 chars 
+	char*** argv1 = new char**[500]; //Container holding all char** lists of commands
+	//char*** storeOR = new char**[50];
+	char** argv = new char*[500];	//Maximum commands allowed = 50
+	char** checkComment = new char*[500]; //Used for parsing if there's a comment
+	char** checkOR = new char*[500];
+	char* hostname = new char[500];	//Largest hostname allowed = 100 chars
+	char* userinput = new char [500];//Largest input allowed = 200 chars 
+	//char* copyOfInput = '\0';
 	char* login = '\0';
-	size_t hostLength = 100;	//Largest hostname allowed = 100 bytes
-	int loopBreak = 0;
-	loginInfo(login, hostname, hostLength);
+	size_t hostLength = 500;	//Largest hostname allowed = 100 bytes
+	//int useOR = 0;
 	do
 	{
+		loginInfo(login, hostname, hostLength);
 		int forkID = 0;
 		cout << login << "@" << hostname << "$ ";
-		cin.getline(userinput, 200, '\n');
-		parseSemiAND(userinput, argv);
+		cin.getline(userinput, 500, '\n');
+		parseComment(userinput, checkComment);
+		//copyOfInput = strdup(checkComment[0]);	
+		parseOR(checkComment[0], checkOR);
+		/*if (copyOfInput != checkOR[0])
+		{
+			for (int i = 0; checkOR[i] != NULL; i++)
+			{
+				storeOR[i] = new char*[50];
+				parseSemiAND(checkOR[i], storeOR[i]);
+			}
+			for (int i = 0; storeOR[i] != NULL; i++)
+			{
+				for (int j = 0; (storeOR[i])[j] != NULL; j++)
+				{
+					argv1[i] = new char*[50];
+					parseSpace((storeOR[i])[j], argv1[i]);
+				}
+			}
+			useOR++;
+		}
+		else 
+		{*/
+		for (int i = 0; checkOR[i] != NULL; i++)
+		{
+			parseSemiAND(checkOR[i], argv);
+		}
 		for (int i = 0; argv[i] != NULL; i++)
 		{
-			argv1[i] = new char*[50];
+			argv1[i] = new char*[500];
 			parseSpace(argv[i], argv1[i]);
 		}
+
+		//}
 		for (int i = 0; argv1[i] != NULL; i++)
 		{
-			//isExit(argv1[i][0]); 
-			if (strcmp(argv1[i][0], "exit") == 0)
-			{
-				loopBreak++;
-				break;
-			}
+			isExit(argv1[i][0]); 
 			forkID = fork();
+			//int success = 
 			checkFork(forkID, argv1[i]);
+			/*if (success == 0 && useOR == 1) // Exit with error
+			{
+				break;
+			}*/
 		}
-		
-		memset(argv1, 0, 50);
-		memset(userinput, 0, 200); //Set all to 0 for fresh input
-		memset(argv, 0, 50);	   //Set all to 0 for fresh args
-		if (loopBreak == 1)
-		{
-			break;
-		}
+			
+		memset(argv1, 0, 500);
+		memset(userinput, 0, 500); //Set all to 0 for fresh input
+		memset(argv, 0, 500);	   //Set all to 0 for fresh args
 	} while (true);
 
 	for (int i = 0; argv1[i] != NULL; i++)
 	{
 		delete [] argv1[i];
 	}
+	delete [] checkComment;
 	delete [] hostname;
 	delete [] userinput;
 	delete [] argv;
 	delete [] argv1;
-	cout << "Exiting shell..." << endl;
+	delete [] checkOR;
 
 	return 0;
 }

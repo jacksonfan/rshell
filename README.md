@@ -36,14 +36,12 @@ README.md
 BUGS
 ===
 
-* && and ; symbols are recognized in exactly the same way
-* || has not been implemented
-* Does not use 'exit()' to exit from function
-* # symbol has not been implemented
-* Has an upper limit of 50 commands
-* Each token has an upper limit size of 100 characters
-* Uses 3d(?) array as a container, causes readability and efficiency issues
+* && operator will run every function on the line, regardless of failure
+* || does not run properly. It executes the last input only 
+* Has an upper limit of 500 commands
+* Program does not differentiate between && and & or || and |
+* A lot of commented out code, causing readability issues
 
-Will add as more are found
+
 
 

@@ -1,5 +1,5 @@
 
-opt = "-W -Wall -Werror -ansi -pedantic"
+opt = "-Wall -Werror -ansi -pedantic"
 compiler = "g++"
 
 all:

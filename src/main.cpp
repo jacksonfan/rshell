@@ -91,7 +91,6 @@ void isExit(char* input)
 	}
 }
 
-//int 
 void checkFork(int pid, char** argv)
 {
 	if (pid == -1)	//Detects for error in fork
@@ -113,86 +112,66 @@ void checkFork(int pid, char** argv)
 			exit(1);
 		}
 	}
-	//return 0;
 }
 
 int main()
 {
 	
 	cout << "Initializing RSHELL" << endl;
-	char*** argv1 = new char**[500]; //Container holding all char** lists of commands
-	//char*** storeOR = new char**[50];
-	char** argv = new char*[500];	//Maximum commands allowed = 50
-	char** checkComment = new char*[500]; //Used for parsing if there's a comment
-	char** checkOR = new char*[500];
-	char* hostname = new char[500];	//Largest hostname allowed = 100 chars
-	char* userinput = new char [500];//Largest input allowed = 200 chars 
-	//char* copyOfInput = '\0';
+	char*** argv1 = new char**[1024]; //Container holding all char** command lists
+	char** argv = new char*[1024];	
+	char** checkComment = new char*[1024]; 	//Used for parsing if there's a comment
+	char** checkOR = new char*[1024];
+	char* hostname = new char[1024];
+	char* userinput = new char [1024];
 	char* login = '\0';
-	size_t hostLength = 500;	//Largest hostname allowed = 100 bytes
-	//int useOR = 0;
-	memset(checkComment, 0, 500);
-	memset(hostname, 0, 500);
-	memset(checkOR, 0, 500);
-	memset(argv1, 0, 500);
-	memset(userinput, 0, 500); //Set all to 0 for fresh input
-	memset(argv, 0, 500);
+	size_t hostLength = 4096;
+
+	memset(argv1, 0, 1024);
+	memset(argv, 0, 1024);
+	memset(checkComment, 0, 1024);
+	memset(checkOR, 0, 1024); 
+	memset(hostname, 0, 1024);
+	memset(userinput, 0, 1024);
 	do
 	{
 		loginInfo(login, hostname, hostLength);
 		int forkID = 0;
 		cout << login << "@" << hostname << "$ ";
-		cin.getline(userinput, 500, '\n');
+		cin.getline(userinput, 1024, '\n');
 		parseComment(userinput, checkComment);
-		//copyOfInput = strdup(checkComment[0]);	
 		parseOR(checkComment[0], checkOR);
-		/*if (copyOfInput != checkOR[0])
-		{
-			for (int i = 0; checkOR[i] != NULL; i++)
-			{
-				storeOR[i] = new char*[50];
-				parseSemiAND(checkOR[i], storeOR[i]);
-			}
-			for (int i = 0; storeOR[i] != NULL; i++)
-			{
-				for (int j = 0; (storeOR[i])[j] != NULL; j++)
-				{
-					argv1[i] = new char*[50];
-					parseSpace((storeOR[i])[j], argv1[i]);
-				}
-			}
-			useOR++;
-		}
-		else 
-		{*/
 		for (int i = 0; checkOR[i] != NULL; i++)
 		{
 			parseSemiAND(checkOR[i], argv);
 		}
 		for (int i = 0; argv[i] != NULL; i++)
 		{
-			argv1[i] = new char*[500];
+			argv1[i] = new char*[1024];
+			memset(argv1[i], 0, 1024);
 			parseSpace(argv[i], argv1[i]);
 		}
 
-		//}
 		for (int i = 0; argv1[i] != NULL; i++)
 		{
 			isExit(argv1[i][0]); 
 			forkID = fork();
-			//int success = 
 			checkFork(forkID, argv1[i]);
-			/*if (success == 0 && useOR == 1) // Exit with error
-			{
-				break;
-			}*/
 		}
-		memset(checkComment, 0, 500);
-		memset(hostname, 0, 500);
-		memset(checkOR, 0, 500);
-		memset(argv1, 0, 500);
-		memset(userinput, 0, 500); //Set all to 0 for fresh input
-		memset(argv, 0, 500);	   //Set all to 0 for fresh args
+		memset(argv1, 0, 1024);
+		memset(argv, 0, 1024);
+		memset(checkComment, 0, 1024);
+		memset(checkOR, 0, 1024); 
+		memset(hostname, 0, 1024);
+		memset(userinput, 0, 1024);
+		
+		/*memContainer(argv1);
+		mem2DArray(argv);
+		mem2DArray(checkComment);
+		mem2DArray(checkOR);
+		memArray(hostname);
+		memArray(userinput);
+		memArray(login);	*/
 	} while (true);
 
 	for (int i = 0; argv1[i] != NULL; i++)

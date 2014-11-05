@@ -1,17 +1,12 @@
 
 compiler = "g++"
-opt =-Wall -Werror -ansi -pedantic
+flags =-Wall -Werror -ansi -pedantic
 
-all:	rshell
+all:	rshell 
 
-rshell: src/main.o
+rshell: src/main.cpp
 	[ ! -d bin ]
 	mkdir -p bin; 
 	
-	$(compiler) $(opt) src/main.cpp -o bin/rshell 
+	$(compiler) $(flags) src/main.cpp bin/rshell 
 
-main.o: main.cpp
-	$(compiler) $(opt) src/main.cpp 
-
-clean:
-	rm bin/*.o bin/rshell.out

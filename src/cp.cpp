@@ -123,6 +123,7 @@ int main(int argc, char **argv)
 		cout << "Error: not enough arguments" << endl;
 		return 1;
 	}
+	
 	x.elapsedUserTime(num);
 	cout << num << endl;
 	return 0;

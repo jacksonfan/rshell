@@ -8,6 +8,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include <pwd.h>
+#include <grp.h>
+#include <time.h>
 
 #define FLAG_a 1
 #define FLAG_R 2
@@ -28,23 +31,124 @@ int largestSize(vector <dirent*> check)
 	return count;
 }
 
-void printDIRS(vector <dirent*> toPrint) 
+void printDIRS(vector <dirent*> toPrint, int flags, const char* dir, int error) 
 {
-	int size = largestSize(toPrint) + 2;
-	int printCount = 0;
-	for (unsigned int i = 0; i < toPrint.size(); i++)
+	if ((flags & FLAG_R) || (error))
 	{
-		if (printCount + (size*2) <= 80)
-		{
-			printf("%-*s", size, toPrint.at(i)->d_name);
-		}
-		else if (printCount + (size*2) > 80)
-		{
-			printf("%-*s\n", size, toPrint.at(i)->d_name);
-		}
+		cout << dir << ":" << endl;
 	}
-		
+	if (flags & FLAG_l)
+	{
+		for (unsigned i = 0; i < toPrint.size(); i++)
+		{
+			char *path = new char[1024];
+			memset(path, 0, 1024);
+			strcat(path, dir);
+			strcat(path, "/");
+			strcat(path, toPrint.at(i)->d_name);
+			struct stat *buf = new struct stat[1024];
+			memset(buf, 0, 1024);
+			int statCheck = stat(path, buf);
+			if (statCheck == -1)
+			{
+				perror("stat in print");
+				exit(1);
+			}
+			char fileType = '-';
+			char uR = '-', uWR = '-', uEX = '-';
+			char gR = '-', gWR = '-', gEX = '-';
+			char oR = '-', oWR = '-', oEX = '-';
+			struct passwd *userID = getpwuid(buf->st_uid);
+			struct group *grpID = getgrgid(buf->st_gid);
+			struct tm *tm = localtime(&(buf->st_mtime));
+			char time[13] = {0};
+			size_t max = 13;
+			strftime(time, max, "%b %e %H:%M" ,tm); 
+			if (S_ISDIR(buf->st_mode))
+			{
+				fileType = 'd';
+			}
+			else if (S_ISLNK(buf->st_mode))
+			{
+				fileType = 'l';
+			}
+			if (buf->st_mode & S_IRUSR)
+			{
+				uR = 'r';
+			}
+			if (buf->st_mode & S_IWUSR)
+			{
+				uWR = 'w';
+			}
+			if (buf->st_mode & S_IXUSR)
+			{
+				uEX = 'x';
+			}
+			if (buf->st_mode & S_IRGRP)
+			{
+				gR = 'r';
+			}
+			if (buf->st_mode & S_IWGRP)
+			{
+				gWR = 'w';
+			}
+			if (buf->st_mode & S_IXGRP)
+			{
+				gEX = 'x';
+			}
+			if (buf->st_mode & S_IROTH)
+			{
+				oR = 'r';
+			}
+			if (buf->st_mode & S_IWOTH)
+			{
+				oWR = 'w';
+			}
+			if (buf->st_mode & S_IXOTH)
+			{
+				oEX = 'x';
+			}
+									
+			//print blocks
+			printf("%c%c%c%c%c%c%c%c%c%c ", fileType, uR, uWR, uEX, gR, gWR, gEX, oR, oWR, oEX);
+			printf("%d ", (int)buf->st_nlink);
+			//print user
+			printf("%s ", userID->pw_name);
+			printf("%s ", grpID->gr_name);
+			printf("%7d ", (int)buf->st_size);
+			printf("%s ", time); 
+			printf("%s\n", toPrint.at(i)->d_name);
+			
+			delete [] path;
+			delete [] buf;
+
+		}		
+	}
+	else 
+	{
+		int size = largestSize(toPrint) + 2;
+		int printCount = 0;
+		int numPrint = 0;
+		for (unsigned int i = 0; i < toPrint.size(); i++)
+		{
+			if (printCount + size > 80 || (numPrint >= 6))
+			{
+				cout << endl;
+				numPrint = 0;
+				printCount = 0;
+				i--;
+			}
+			else if (printCount + (size*2) <= 80 && (numPrint < 6))
+			{
+				printf("%-*s", size, toPrint.at(i)->d_name);
+				printCount += size;
+				numPrint++;
+			}
+		}
+		cout << endl;
+	}
 	cout << endl;
+		
 }
 
 int compareVect(vector <char> left, vector <char> right)
@@ -144,14 +248,14 @@ void mergeSort(vector <dirent*>& sortThis)
 	}
 }
 
-void checkFlags(const char **argv, int &flags, vector <const char*> &dirNames)
+int checkFlags(const char **argv, int &flags, vector <const char*> &dirNames)
 {
 	int errorCheck = 0;
 	for (int i = 1; argv[i]; i++)
 	{
 		if (argv[i][0] == '-')
 		{
-			for (int j = 0; argv[i][j]; j++)
+			for (int j = 1; argv[i][j]; j++)
 			{
 				if (argv[i][j] == 'a')
 				{
@@ -164,6 +268,12 @@ void checkFlags(const char **argv, int &flags, vector <const char*> &dirNames)
 				else if (argv[i][j] == 'R')
 				{
 					flags = flags | FLAG_R;
+				}
+				else
+				{
+					printf("ls: invalid option -- '%c'\n", argv[i][j]);
+					printf("Available flags: -a -R -l\n");
+					exit(1);
 				}
 			}
 		}
@@ -197,7 +307,7 @@ void checkFlags(const char **argv, int &flags, vector <const char*> &dirNames)
 	{
 		dirNames.push_back(".");
 	}
-					
+	return errorCheck;					
 }
 
 int main(int argc, char **argv)
@@ -208,10 +318,12 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 	vector <const char*> dirNames;
+	dirNames.clear();
 	int flags = 0;
-	checkFlags((const char**)argv, flags, dirNames);
+	int errorCheck = checkFlags((const char**)argv, flags, dirNames);
 	dirent *direntp = 0;
 	vector <dirent*> allDIRS;
+	allDIRS.clear();
 	for (unsigned a = 0; a < dirNames.size(); a++)
 	{
 		DIR *dirp = opendir(dirNames.at(a));
@@ -220,7 +332,15 @@ int main(int argc, char **argv)
 			perror("opendir");
 			exit(1);
 		}
-		if (flags == 0)
+		
+		if (flags & FLAG_a)
+		{
+			for (int i = 0; (direntp = readdir(dirp)); i++)
+			{
+				allDIRS.push_back(direntp);
+			}
+		}
+		else 
 		{
 			while ((direntp = readdir(dirp)))
 			{
@@ -230,16 +350,45 @@ int main(int argc, char **argv)
 				}
 			}
 		}
-		else if (flags & FLAG_a)
-		{
-			for (int i = 0; (direntp = readdir(dirp)); i++)
-			{
-				allDIRS.push_back(direntp);
-			}
-		}
 		
+		if (flags & FLAG_R)
+		{
+		
+			for (unsigned i = 0; i < allDIRS.size(); i++)
+			{
+				char *path = new char[1024];
+				memset(path, 0, 1024);
+				struct stat *buf = new struct stat[1024];
+				memset(buf, 0, 1024);
+				strcat(path, dirNames.at(a));
+				strcat(path, "/");
+				strcat(path, allDIRS.at(i)->d_name);
+				int statCheck = stat(path, buf);
+				if (statCheck == -1)
+				{
+					perror("stat lsR");
+					exit(1);
+				}
+				char comp[] = ".";
+				char comp1[] = "..";
+				if (S_ISDIR(buf->st_mode) && (strcmp(allDIRS.at(i)->d_name, comp) != 0) && (strcmp(allDIRS.at(i)->d_name, comp1) != 0))
+				{
+					char *addDIR = new char[1024];
+					memset(addDIR, 0, 1024);
+					strcpy(addDIR, path);
+					
+					dirNames.push_back(addDIR);
+				}
+				delete [] path;
+				delete [] buf;
+			}
+			
+		}
+				
+			
+
 		mergeSort(allDIRS);
-		printDIRS(allDIRS);
+		printDIRS(allDIRS, flags, dirNames.at(a), errorCheck);
 
 		if (closedir(dirp) == -1)
 		{
@@ -250,8 +399,10 @@ int main(int argc, char **argv)
 		allDIRS.clear();
 	}	
 
-
-
+	for (unsigned i = 1; i < dirNames.size(); i++)
+	{
+		delete [] dirNames.at(i);
+	}
 
 	return 0;
 }

@@ -131,12 +131,18 @@ void printDIRS(vector <dirent*> toPrint, int flags, const char* dir)
 		int numPrint = 0;
 		for (unsigned int i = 0; i < toPrint.size(); i++)
 		{
-			if (printCount + size > 80 || (numPrint >= 6))
+			/*if (printCount + size > 80 || (numPrint >= 6))
 			{
 				cout << endl;
 				numPrint = 0;
 				printCount = 0;
 				i--;
+			}*/
+			if (printCount + (size*2) > 80 || (numPrint >= 6))
+			{
+				printf("%-*s\n", size, toPrint.at(i)->d_name);
+				printCount = 0;
+				numPrint = 0;
 			}
 			else if (printCount + (size*2) <= 80 && (numPrint < 6))
 			{

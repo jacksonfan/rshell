@@ -1,0 +1,1545 @@
+Script started on Tue 11 Nov 2014 11:55:59 PM PST
+]0;jackson@jlaptop: ~/Repos/rshell/testsjackson@jlaptop:~/Repos/rshell/tests$ cd ..
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ make
+"g++" -Wall -Werror -ansi -pedantic src/main.cpp -o bin/rshell 
+"g++" -Wall -Werror -ansi -pedantic src/ls.cpp -o bin/ls
+"g++" -Wall -Werror -ansi -pedantic src/cp.cpp -o bin/cp
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ bin/ls
+a.out      bin        LICENSE    Makefile   README.md  src        tests      
+
+
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ bin [K/ls -a
+.          ..         .git       a.out      bin        LICENSE    Makefile   
+README.md  src        tests      
+
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ bin/ls -a[Kl
+-rwxrwxr-x 1 jackson jackson  152044 Nov 11 23:53 a.out
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:56 bin
+-rw-rw-r-- 1 jackson jackson      96 Nov 11 19:47 LICENSE
+-rw-rw-r-- 1 jackson jackson     339 Nov 11 18:39 Makefile
+-rw-rw-r-- 1 jackson jackson     972 Nov 11 23:46 README.md
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:54 src
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:55 tests
+
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ bin/s [K[Kls -r[KR
+.:
+a.out      bin        LICENSE    Makefile   README.md  src        tests      
+
+
+./src:
+a.out     cp.cpp    ls.cpp    main.cpp  Timer.h   
+
+./tests:
+exec  ls    
+
+./bin:
+cp      ls      rshell  
+
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ bin/ls -al
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 23:54 .
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 18:18 ..
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 .git
+-rwxrwxr-x 1 jackson jackson  152044 Nov 11 23:53 a.out
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:56 bin
+-rw-rw-r-- 1 jackson jackson      96 Nov 11 19:47 LICENSE
+-rw-rw-r-- 1 jackson jackson     339 Nov 11 18:39 Makefile
+-rw-rw-r-- 1 jackson jackson     972 Nov 11 23:46 README.md
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:54 src
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:55 tests
+
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ bin [K/s[Kls -la
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 23:54 .
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 18:18 ..
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 .git
+-rwxrwxr-x 1 jackson jackson  152044 Nov 11 23:53 a.out
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:56 bin
+-rw-rw-r-- 1 jackson jackson      96 Nov 11 19:47 LICENSE
+-rw-rw-r-- 1 jackson jackson     339 Nov 11 18:39 Makefile
+-rw-rw-r-- 1 jackson jackson     972 Nov 11 23:46 README.md
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:54 src
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:55 tests
+
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ bin/ls -l[Ka -l
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 23:54 .
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 18:18 ..
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 .git
+-rwxrwxr-x 1 jackson jackson  152044 Nov 11 23:53 a.out
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:56 bin
+-rw-rw-r-- 1 jackson jackson      96 Nov 11 19:47 LICENSE
+-rw-rw-r-- 1 jackson jackson     339 Nov 11 18:39 Makefile
+-rw-rw-r-- 1 jackson jackson     972 Nov 11 23:46 README.md
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:54 src
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:55 tests
+
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ /bin[K[K[K[Kbin/ls -alR
+.:
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 23:54 .
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 18:18 ..
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 .git
+-rwxrwxr-x 1 jackson jackson  152044 Nov 11 23:53 a.out
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:56 bin
+-rw-rw-r-- 1 jackson jackson      96 Nov 11 19:47 LICENSE
+-rw-rw-r-- 1 jackson jackson     339 Nov 11 18:39 Makefile
+-rw-rw-r-- 1 jackson jackson     972 Nov 11 23:46 README.md
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:54 src
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:55 tests
+
+./src:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:54 .
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 23:54 ..
+-rwxrwxr-x 1 jackson jackson  152005 Nov 11 23:18 a.out
+-rw-rw-r-- 1 jackson jackson    2213 Nov 11 18:18 cp.cpp
+-rw-rw-r-- 1 jackson jackson    7934 Nov 11 23:53 ls.cpp
+-rw-rw-r-- 1 jackson jackson    3722 Nov  9 16:43 main.cpp
+-rw-rw-r-- 1 jackson jackson    2256 Nov 11 18:18 Timer.h
+
+./.git:
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 .
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 23:54 ..
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 branches
+-rw-rw-r-- 1 jackson jackson      13 Nov 11 23:53 COMMIT_EDITMSG
+-rw-rw-r-- 1 jackson jackson     258 Oct 18 19:37 config
+-rw-rw-r-- 1 jackson jackson      73 Oct 18 19:37 description
+-rw-rw-r-- 1 jackson jackson     305 Nov 11 18:18 FETCH_HEAD
+-rw-rw-r-- 1 jackson jackson      23 Oct 21 23:24 HEAD
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 hooks
+-rw-rw-r-- 1 jackson jackson     648 Nov 11 23:53 index
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 info
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 logs
+-rw-rw-r-- 1 jackson jackson     275 Oct 18 23:42 MERGE_MSG.save
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 objects
+-rw-rw-r-- 1 jackson jackson      41 Nov 11 18:18 ORIG_HEAD
+-rw-rw-r-- 1 jackson jackson     107 Oct 18 19:37 packed-refs
+drwxrwxr-x 5 jackson jackson    4096 Oct 18 19:37 refs
+-rw------- 1 jackson jackson      68 Nov 11 23:47 TAG_EDITMSG
+
+./tests:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:55 .
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 23:54 ..
+-rw-rw-r-- 1 jackson jackson    9065 Oct 21 23:52 exec
+-rw-rw-r-- 1 jackson jackson    4096 Nov 11 23:56 ls
+
+./bin:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:56 .
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 23:54 ..
+-rwxrwxr-x 1 jackson jackson   19502 Nov 11 23:56 cp
+-rwxrwxr-x 1 jackson jackson   63076 Nov 11 23:56 ls
+-rwxrwxr-x 1 jackson jackson   14312 Nov 11 23:56 rshell
+
+./.git/refs:
+drwxrwxr-x 5 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 ..
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 heads
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 remotes
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:49 tags
+
+./.git/info:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 ..
+-rw-rw-r-- 1 jackson jackson     240 Oct 18 19:37 exclude
+
+./.git/objects:
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 .
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 ..
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:13 03
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:40 0a
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:39 0f
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 10
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:40 12
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 1a
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:58 1d
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:24 21
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:14 27
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 28
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:29 2b
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 2d
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:06 31
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:34 36
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:18 37
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 38
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:06 39
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:13 3a
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 3b
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:06 3c
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 3f
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:06 40
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 44
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:40 45
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 46
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 48
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:48 4e
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:40 51
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 23:39 55
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:55 58
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:06 59
+drwxrwxr-x 2 jackson jackson    4096 Oct 19 18:09 5a
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 13:14 5b
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:55 5f
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:46 61
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 62
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:30 67
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 23:38 6a
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 20:13 6b
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:46 6c
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:24 6e
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:24 6f
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:29 72
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:30 73
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:24 75
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:29 76
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:58 77
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 78
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:32 7f
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 81
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 13:15 85
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 86
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:29 8b
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 13:15 8c
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:41 8f
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 95
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:41 9d
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:48 9e
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 23:39 a0
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 a8
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:14 a9
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:39 ab
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:48 b1
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:48 b4
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:29 b7
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 bc
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 bd
+drwxrwxr-x 2 jackson jackson    4096 Oct 19 18:08 c4
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:39 cb
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 d1
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:47 d2
+drwxrwxr-x 2 jackson jackson    4096 Oct 19 18:09 d6
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:47 d8
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:05 d9
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 13:15 dd
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:47 df
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 e1
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 20:13 e6
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:47 e8
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:40 ea
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:14 eb
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:41 f0
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:29 f2
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 20:16 f3
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:48 f4
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:06 f5
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 f6
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:39 f8
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:47 f9
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 info
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 pack
+
+./.git/branches:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 ..
+
+./.git/logs:
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 ..
+-rw-rw-r-- 1 jackson jackson    4997 Nov 11 23:53 HEAD
+drwxrwxr-x 4 jackson jackson    4096 Oct 18 19:37 refs
+
+./.git/hooks:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 ..
+-rwxrwxr-x 1 jackson jackson     452 Oct 18 19:37 applypatch-msg.sample
+-rwxrwxr-x 1 jackson jackson     896 Oct 18 19:37 commit-msg.sample
+-rwxrwxr-x 1 jackson jackson     189 Oct 18 19:37 post-update.sample
+-rwxrwxr-x 1 jackson jackson     398 Oct 18 19:37 pre-applypatch.sample
+-rwxrwxr-x 1 jackson jackson    1642 Oct 18 19:37 pre-commit.sample
+-rwxrwxr-x 1 jackson jackson    1352 Oct 18 19:37 pre-push.sample
+-rwxrwxr-x 1 jackson jackson    4898 Oct 18 19:37 pre-rebase.sample
+-rwxrwxr-x 1 jackson jackson    1239 Oct 18 19:37 prepare-commit-msg.sample
+-rwxrwxr-x 1 jackson jackson    3611 Oct 18 19:37 update.sample
+
+./.git/refs/remotes:
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 5 jackson jackson    4096 Oct 18 19:37 ..
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 origin
+
+./.git/refs/tags:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:49 .
+drwxrwxr-x 5 jackson jackson    4096 Oct 18 19:37 ..
+-rw-rw-r-- 1 jackson jackson      41 Oct 22 00:48 hw0
+-rw-rw-r-- 1 jackson jackson      41 Nov 11 18:18 hw0v2
+
+./.git/refs/heads:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 .
+drwxrwxr-x 5 jackson jackson    4096 Oct 18 19:37 ..
+-rw-rw-r-- 1 jackson jackson      41 Oct 21 23:24 exec
+-rw-rw-r-- 1 jackson jackson      41 Nov 11 23:53 master
+
+./.git/objects/81:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     165 Nov 11 18:18 078be6dd8b31d35a89611b9efa319cf452edef
+-r--r--r-- 1 jackson jackson    2684 Oct 21 23:55 a8e2ae725f42436f5d202988104cc75c5e249d
+
+./.git/objects/e8:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:47 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     174 Nov 11 23:47 73be955a4305401a749440c80cf65e33ec0ca4
+-r--r--r-- 1 jackson jackson      48 Oct 21 23:55 a8778a3db9de671f2c669aeef7b49d891834bc
+
+./.git/objects/85:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 13:15 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     182 Oct 21 13:15 f69377cd81c16e5f6bb2831a8a2b1f28b48f04
+
+./.git/objects/info:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+
+./.git/objects/76:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:29 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     140 Nov 11 23:29 9940f8d51dc106bd3ab695e6cfcc5438d596b7
+
+./.git/objects/39:
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:06 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     148 Oct 18 23:39 15611a9a1b4618fbb50b233c604b8b79ef73cc
+-r--r--r-- 1 jackson jackson     177 Oct 22 00:06 a3acd3a17588513a891a62c743947da9f3dd67
+
+./.git/objects/a9:
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:14 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      53 Nov  4 20:14 45269c91d0acd81a7a787719515ea67c810a76
+
+./.git/objects/1d:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:58 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      97 Oct 18 21:58 c4be0b054048e4ca882370b3fa0338d2b8e099
+
+./.git/objects/1a:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson    2630 Nov 11 23:53 0fab52cc69416fcbd2ab95ef35e7afff0b61e8
+-r--r--r-- 1 jackson jackson     213 Oct 21 23:27 5503476f0f71eeeaceb05d9efad40690f387fa
+
+./.git/objects/e6:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 20:13 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      15 Oct 18 20:13 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+
+./.git/objects/6e:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:24 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      96 Oct 21 23:24 78de0c0ca0efd46067c30e5be36a94ee199e75
+
+./.git/objects/0f:
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:39 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     169 Oct 22 00:39 397ecb8d7cd996e46e6d26350741b5a3c7172d
+
+./.git/objects/72:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:29 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     125 Oct 18 21:29 e494c6983666297702bf3899f2f562aeb46279
+
+./.git/objects/31:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:06 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     164 Nov 11 23:06 70bd9b893fee748f46a7a3cea23c748dadd7e9
+
+./.git/objects/9d:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:41 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     177 Nov 11 18:41 c92dd75b7ba70abfb2123f9453d4b6a9579377
+
+./.git/objects/51:
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:40 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     176 Oct 22 00:40 780112421edd9366b6147ca23d92ccf6113abf
+
+./.git/objects/77:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:58 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     161 Oct 18 21:58 368679f408631292258837a9b5e64ec79780f9
+
+./.git/objects/67:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:30 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     148 Oct 18 21:30 364a699d0aa18b5f1ad842552cab77b46fb918
+
+./.git/objects/21:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:24 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     167 Oct 21 23:24 cd3d0dc8c2d0c2f89cd39511d601e8464ceb5a
+
+./.git/objects/75:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:24 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      53 Oct 21 23:24 4d4c4054065d166900bf692cf5ab8321d3b2f5
+
+./.git/objects/2d:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     217 Oct 21 23:27 b2fef47c71364f6071df2e165e80271eda5316
+
+./.git/objects/6a:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 23:38 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     480 Oct 18 23:38 a482a5354a639268f45911a89cc9731c394ce3
+
+./.git/objects/a0:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 23:39 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     179 Oct 18 23:39 b92a861afffa9ab93a37c342fe33dd0699d638
+
+./.git/objects/eb:
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:14 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     169 Nov  4 20:14 b8fc022c4538a58b0fa03343e02555907038cf
+
+./.git/objects/59:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:06 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     140 Nov 11 23:06 7cf5a90beb43d4bbeefabe3d0c8bed600ab4f8
+
+./.git/objects/ab:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:39 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     148 Oct 21 23:39 b930b24d4107c6037edaefe999bad8efdc5593
+
+./.git/objects/3c:
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:06 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     131 Oct 22 00:06 d8bff7e46f035bc693f7251c40b8ef5c856731
+
+./.git/objects/46:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     163 Oct 18 21:30 8a32c5dea6b29c4c2f9b6404125110c8a2a13d
+-r--r--r-- 1 jackson jackson     706 Nov 11 18:18 d7eaa62896d3cbc05d59119beb3a8828ec4bb6
+
+./.git/objects/e1:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     177 Nov 11 18:18 36b04d9b48d761e2779f2c98ef9073170f13a4
+
+./.git/objects/df:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:47 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     177 Nov 11 23:47 036ba3fb45b9b989693f50bb1d38d2c757b629
+
+./.git/objects/dd:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 13:15 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      52 Oct 21 13:15 526bfab8e48d69f035715d796df527d6387eb3
+
+./.git/objects/pack:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+
+./.git/objects/10:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     218 Oct 21 23:27 ba0051350df93f24b9c94e03cdd5ec7396f5d3
+
+./.git/objects/6c:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:46 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     588 Nov 11 23:46 703eb5d87c637744bb17f210fa6553f3b0b9ce
+-r--r--r-- 1 jackson jackson     177 Nov 11 23:06 91744706f8a812d83de8ee1bec637c9e8bc7de
+
+./.git/objects/8b:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:29 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     140 Oct 18 21:29 1fea011e1ec57e05e6adf23ab902065f67e8aa
+
+./.git/objects/40:
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:06 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     160 Oct 22 00:06 d56d4a53b5f214c2d7cb68b47c5b712c6c68e6
+-r--r--r-- 1 jackson jackson    1419 Oct 21 23:18 e39dd3b68eebf0b8ea1183ba3a1fc3b5a889f8
+
+./.git/objects/f4:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:48 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     148 Oct 21 23:48 ca41a595c16e204d98e067a0647b1221e565a0
+
+./.git/objects/5f:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:55 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     177 Oct 21 23:55 0f0b59044bd1d561e04ccf69a7b0df4f0261c6
+
+./.git/objects/d8:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:47 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     169 Oct 18 21:47 db5c2c10adb3dc7634c5a444610e7eb2df4f9a
+
+./.git/objects/38:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     159 Nov 11 23:53 011f472f118937fe994813d075f3e58efa6af6
+-r--r--r-- 1 jackson jackson     139 Oct 22 00:44 c926aa4286e9945c8149da92104827dbc33cdc
+
+./.git/objects/4e:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:48 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      53 Oct 21 23:48 a01666997b6b22378125c14d7d64629cf42c25
+
+./.git/objects/48:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     706 Nov 11 18:18 919b0fa35546ced98838cdef3896a0c49c788a
+
+./.git/objects/b1:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:48 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     152 Oct 21 23:48 88ff06e876bb50b064bf41110073827c19c44b
+
+./.git/objects/58:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:55 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     158 Oct 21 23:55 e1f13228eeb99f892aafdf0aac2a830a753f55
+
+./.git/objects/bd:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     140 Nov 11 23:53 4285a55dff03743a566b4597ca560343c76473
+
+./.git/objects/8f:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:41 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     169 Nov 11 18:41 09b6d5456c90cf5e8651752847cc6c0cf96e19
+
+./.git/objects/36:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:34 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     214 Oct 18 21:34 6c6bc889033d695067dda5b6ba99f76a5e3de8
+
+./.git/objects/f5:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:06 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     122 Oct 18 19:37 be756edd0ecf23ff9016ee127f03451a0ee796
+-r--r--r-- 1 jackson jackson    2574 Nov 11 23:06 d2459a5d2ea599726f87338023cec54c9991f0
+
+./.git/objects/73:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:30 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      53 Oct 18 21:30 df36c8f6b0b31f6d2d5b0b2ea8db20f6e44c4a
+
+./.git/objects/f2:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:29 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     118 Oct 18 20:16 0ba160e0dcdd03b1337b8a0927defdb0138bd1
+-r--r--r-- 1 jackson jackson     178 Nov 11 23:29 7ef69ec147c3a0d1c6b74c64ad01c8ce2b2cf5
+-r--r--r-- 1 jackson jackson      54 Oct 18 19:37 abdd2541cbb98c5b340344766648f296b84e32
+
+./.git/objects/a8:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     210 Oct 21 23:27 d6c267299221d20731de5fd3129c6eafff8afd
+
+./.git/objects/d1:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     656 Nov 11 18:18 1dd08bf141b611b3023a6a835e8605bc5773d6
+
+./.git/objects/6f:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:24 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     148 Oct 21 23:24 0095b31b61ace8c40381c01a6fcfad7485781b
+-r--r--r-- 1 jackson jackson     148 Oct 18 21:58 e52d50e45dd9ec60710e24cb391e00f1023fee
+
+./.git/objects/b4:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:48 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson    1460 Oct 21 23:48 89b59843fc21ecd4b28a0d1871350b2fa5d5ca
+
+./.git/objects/c4:
+drwxrwxr-x 2 jackson jackson    4096 Oct 19 18:08 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     723 Oct 19 18:08 8e415bc8bbc5d3664cc899b657d074902a7fce
+
+./.git/objects/d9:
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:05 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     162 Oct 22 00:05 ecbeccd718bac19d5ff17e398be5dbe822a4fc
+
+./.git/objects/f6:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     212 Nov 11 18:18 c102c03dc43552176004caea4d42af577f26e8
+
+./.git/objects/bc:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      42 Oct 18 19:37 13f81e93ad69574fedd70c86e7187feaa48f35
+
+./.git/objects/ea:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:40 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson    1152 Nov 11 18:40 35b6f13f08dbb7c41e28ef7ed04a03d3682b78
+
+./.git/objects/3b:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     229 Oct 21 23:27 29c62be9a299f5c528d9a8fa95ac5c37c9b23e
+
+./.git/objects/f3:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 20:16 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     189 Oct 18 20:16 03d99f1f93de59af95ef31d6bb2bb52106f723
+
+./.git/objects/3a:
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:13 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     141 Nov  4 20:13 ac38f72d6cc437230ea71d6da06619dbe7529f
+
+./.git/objects/b7:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:29 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     166 Nov 11 23:29 d18a8bcfdbe43409a909224acb18536d9fa092
+
+./.git/objects/55:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 23:39 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      53 Oct 18 23:39 be57b850aefe0ba1a86efa290cbd7177415a8e
+
+./.git/objects/5a:
+drwxrwxr-x 2 jackson jackson    4096 Oct 19 18:09 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     217 Oct 19 18:09 414e1b73c5bc6c019d4cacc546e83e1a4b73e1
+
+./.git/objects/27:
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:14 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     177 Nov  4 20:14 537ea0352729ed38e168c60ba6b4c3b54e43c5
+
+./.git/objects/7f:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:32 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     238 Oct 18 21:32 9ef6d85a9ce56f3f4fb33a23cb3d896a0e4930
+
+./.git/objects/f8:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:39 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     161 Oct 21 23:39 11cb87d6b9448b8742195d90b5075bf2f2c2b0
+
+./.git/objects/62:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     167 Nov 11 18:18 51603ed1315957fc0a073848c5eabf62c88f12
+-r--r--r-- 1 jackson jackson     148 Oct 19 18:09 965f51a3df6ac04ad7cd04e2a1450b03f9790b
+
+./.git/objects/28:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     113 Nov 11 18:18 37ee747699587dce29be9eecb90d38d4109631
+
+./.git/objects/45:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:40 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     193 Nov 11 18:40 2682227db8c125b1f3daa793b6f4757c6156b1
+
+./.git/objects/95:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     657 Nov 11 18:18 65812ecf3827a32980dce6fe2ec5b571e39cc8
+
+./.git/objects/8c:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 13:15 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     147 Oct 21 13:15 d3a6b895c5cb6bd741ffb28592411e0e7d1f2a
+
+./.git/objects/44:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     177 Nov 11 23:53 ba6bfdf46b154f801a6dfa750bf11d965b1d98
+
+./.git/objects/03:
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:13 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson    1218 Nov  4 20:13 92b2d930b055c9b0bd00134ac1d9f6d6d173ef
+
+./.git/objects/3f:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     177 Nov 11 18:18 e68ab8676727ff4fd7f0919b3ffa90f714316d
+
+./.git/objects/d6:
+drwxrwxr-x 2 jackson jackson    4096 Oct 19 18:09 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      53 Oct 19 18:09 81fef74275534a912fd68f88d62b55ad6ee289
+
+./.git/objects/6b:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 20:13 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     105 Oct 18 20:13 ce8dacef0d7047cb0ff9905dc1983032503290
+
+./.git/objects/12:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:40 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson    1554 Nov 11 18:40 4bee5c3a985408d5c839988301690d220c0e55
+
+./.git/objects/2b:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:29 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson    2602 Nov 11 23:29 8f3499b6ba7ad3b370a647645281e90288cdfa
+
+./.git/objects/d2:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:47 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     148 Oct 18 21:47 195751d254480adddf5bb6c5a479895eac7eb7
+
+./.git/objects/37:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     417 Oct 21 23:18 b851d8dea6ddf5ec156940329aa561b66b9006
+
+./.git/objects/f0:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:41 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     139 Nov 11 18:41 b26a2af5140a2bfe023114cd86dfc788634b43
+
+./.git/objects/0a:
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:40 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     180 Oct 22 00:40 c87a02ffe2bd32c16a84b601c9ad77dbc1f4c2
+
+./.git/objects/f9:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:47 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     128 Nov 11 23:47 e0667dc3abac3bab63c1b2f3b6926f486a0c90
+
+./.git/objects/86:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     113 Nov 11 18:18 c3408e92c0903da25616433705c0be2334bbfb
+
+./.git/objects/78:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     210 Oct 21 23:27 9ac32f9df0ffc24f7acbe659ce5edc065db2f4
+
+./.git/objects/9e:
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:48 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     142 Oct 22 00:48 8a2e8f7945329fa6a2ad3183dc4b9e45860c24
+
+./.git/objects/5b:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 13:14 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson    1150 Oct 21 13:14 7f80ef78b6fb4462312975eb8a7d3a05f34318
+-r--r--r-- 1 jackson jackson     452 Oct 21 13:14 e0eab3f9ebe600228f38225b0a762c5c8ded2c
+
+./.git/objects/61:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:46 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     232 Oct 18 21:46 e4ed42d98ff3387e3fd3e538b1b08b62578009
+
+./.git/objects/cb:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:39 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     154 Oct 21 23:39 7f96e217dcab56ab67ccacdbabe6d04df66f6c
+
+./.git/logs/refs:
+drwxrwxr-x 4 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 ..
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:51 heads
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 remotes
+
+./.git/refs/remotes/origin:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 .
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 ..
+-rw-rw-r-- 1 jackson jackson      41 Oct 21 23:26 exec
+-rw-rw-r-- 1 jackson jackson      32 Oct 18 19:37 HEAD
+-rw-rw-r-- 1 jackson jackson      41 Nov 11 23:53 master
+
+./.git/logs/refs/remotes:
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 4 jackson jackson    4096 Oct 18 19:37 ..
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 origin
+
+./.git/logs/refs/heads:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:51 .
+drwxrwxr-x 4 jackson jackson    4096 Oct 18 19:37 ..
+-rw-rw-r-- 1 jackson jackson    1758 Oct 21 23:24 exec
+-rw-rw-r-- 1 jackson jackson    2392 Nov 11 23:53 master
+
+./.git/logs/refs/remotes/origin:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 .
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 ..
+-rw-rw-r-- 1 jackson jackson    1152 Oct 21 23:26 exec
+-rw-rw-r-- 1 jackson jackson     178 Oct 18 19:37 HEAD
+-rw-rw-r-- 1 jackson jackson    2044 Nov 11 23:53 master
+
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ bin -[K[K/ls -R
+.:
+a.out      bin        LICENSE    Makefile   README.md  src        tests      
+
+
+./src:
+a.out     cp.cpp    ls.cpp    main.cpp  Timer.h   
+
+./tests:
+exec  ls    
+
+./bin:
+cp      ls      rshell  
+
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ bin /[K[K/ls -lRa
+.:
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 23:54 .
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 18:18 ..
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 .git
+-rwxrwxr-x 1 jackson jackson  152044 Nov 11 23:53 a.out
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:56 bin
+-rw-rw-r-- 1 jackson jackson      96 Nov 11 19:47 LICENSE
+-rw-rw-r-- 1 jackson jackson     339 Nov 11 18:39 Makefile
+-rw-rw-r-- 1 jackson jackson     972 Nov 11 23:46 README.md
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:54 src
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:55 tests
+
+./src:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:54 .
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 23:54 ..
+-rwxrwxr-x 1 jackson jackson  152005 Nov 11 23:18 a.out
+-rw-rw-r-- 1 jackson jackson    2213 Nov 11 18:18 cp.cpp
+-rw-rw-r-- 1 jackson jackson    7934 Nov 11 23:53 ls.cpp
+-rw-rw-r-- 1 jackson jackson    3722 Nov  9 16:43 main.cpp
+-rw-rw-r-- 1 jackson jackson    2256 Nov 11 18:18 Timer.h
+
+./.git:
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 .
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 23:54 ..
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 branches
+-rw-rw-r-- 1 jackson jackson      13 Nov 11 23:53 COMMIT_EDITMSG
+-rw-rw-r-- 1 jackson jackson     258 Oct 18 19:37 config
+-rw-rw-r-- 1 jackson jackson      73 Oct 18 19:37 description
+-rw-rw-r-- 1 jackson jackson     305 Nov 11 18:18 FETCH_HEAD
+-rw-rw-r-- 1 jackson jackson      23 Oct 21 23:24 HEAD
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 hooks
+-rw-rw-r-- 1 jackson jackson     648 Nov 11 23:53 index
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 info
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 logs
+-rw-rw-r-- 1 jackson jackson     275 Oct 18 23:42 MERGE_MSG.save
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 objects
+-rw-rw-r-- 1 jackson jackson      41 Nov 11 18:18 ORIG_HEAD
+-rw-rw-r-- 1 jackson jackson     107 Oct 18 19:37 packed-refs
+drwxrwxr-x 5 jackson jackson    4096 Oct 18 19:37 refs
+-rw------- 1 jackson jackson      68 Nov 11 23:47 TAG_EDITMSG
+
+./tests:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:55 .
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 23:54 ..
+-rw-rw-r-- 1 jackson jackson    9065 Oct 21 23:52 exec
+-rw-rw-r-- 1 jackson jackson   36864 Nov 11 23:56 ls
+
+./bin:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:56 .
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 23:54 ..
+-rwxrwxr-x 1 jackson jackson   19502 Nov 11 23:56 cp
+-rwxrwxr-x 1 jackson jackson   63076 Nov 11 23:56 ls
+-rwxrwxr-x 1 jackson jackson   14312 Nov 11 23:56 rshell
+
+./.git/refs:
+drwxrwxr-x 5 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 ..
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 heads
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 remotes
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:49 tags
+
+./.git/info:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 ..
+-rw-rw-r-- 1 jackson jackson     240 Oct 18 19:37 exclude
+
+./.git/objects:
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 .
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 ..
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:13 03
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:40 0a
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:39 0f
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 10
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:40 12
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 1a
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:58 1d
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:24 21
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:14 27
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 28
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:29 2b
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 2d
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:06 31
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:34 36
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:18 37
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 38
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:06 39
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:13 3a
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 3b
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:06 3c
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 3f
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:06 40
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 44
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:40 45
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 46
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 48
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:48 4e
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:40 51
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 23:39 55
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:55 58
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:06 59
+drwxrwxr-x 2 jackson jackson    4096 Oct 19 18:09 5a
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 13:14 5b
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:55 5f
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:46 61
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 62
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:30 67
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 23:38 6a
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 20:13 6b
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:46 6c
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:24 6e
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:24 6f
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:29 72
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:30 73
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:24 75
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:29 76
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:58 77
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 78
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:32 7f
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 81
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 13:15 85
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 86
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:29 8b
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 13:15 8c
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:41 8f
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 95
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:41 9d
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:48 9e
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 23:39 a0
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 a8
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:14 a9
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:39 ab
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:48 b1
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:48 b4
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:29 b7
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 bc
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 bd
+drwxrwxr-x 2 jackson jackson    4096 Oct 19 18:08 c4
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:39 cb
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 d1
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:47 d2
+drwxrwxr-x 2 jackson jackson    4096 Oct 19 18:09 d6
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:47 d8
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:05 d9
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 13:15 dd
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:47 df
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 e1
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 20:13 e6
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:47 e8
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:40 ea
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:14 eb
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:41 f0
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:29 f2
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 20:16 f3
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:48 f4
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:06 f5
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 f6
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:39 f8
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:47 f9
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 info
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 pack
+
+./.git/branches:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 ..
+
+./.git/logs:
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 ..
+-rw-rw-r-- 1 jackson jackson    4997 Nov 11 23:53 HEAD
+drwxrwxr-x 4 jackson jackson    4096 Oct 18 19:37 refs
+
+./.git/hooks:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 8 jackson jackson    4096 Nov 11 23:53 ..
+-rwxrwxr-x 1 jackson jackson     452 Oct 18 19:37 applypatch-msg.sample
+-rwxrwxr-x 1 jackson jackson     896 Oct 18 19:37 commit-msg.sample
+-rwxrwxr-x 1 jackson jackson     189 Oct 18 19:37 post-update.sample
+-rwxrwxr-x 1 jackson jackson     398 Oct 18 19:37 pre-applypatch.sample
+-rwxrwxr-x 1 jackson jackson    1642 Oct 18 19:37 pre-commit.sample
+-rwxrwxr-x 1 jackson jackson    1352 Oct 18 19:37 pre-push.sample
+-rwxrwxr-x 1 jackson jackson    4898 Oct 18 19:37 pre-rebase.sample
+-rwxrwxr-x 1 jackson jackson    1239 Oct 18 19:37 prepare-commit-msg.sample
+-rwxrwxr-x 1 jackson jackson    3611 Oct 18 19:37 update.sample
+
+./.git/refs/remotes:
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 5 jackson jackson    4096 Oct 18 19:37 ..
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 origin
+
+./.git/refs/tags:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:49 .
+drwxrwxr-x 5 jackson jackson    4096 Oct 18 19:37 ..
+-rw-rw-r-- 1 jackson jackson      41 Oct 22 00:48 hw0
+-rw-rw-r-- 1 jackson jackson      41 Nov 11 18:18 hw0v2
+
+./.git/refs/heads:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 .
+drwxrwxr-x 5 jackson jackson    4096 Oct 18 19:37 ..
+-rw-rw-r-- 1 jackson jackson      41 Oct 21 23:24 exec
+-rw-rw-r-- 1 jackson jackson      41 Nov 11 23:53 master
+
+./.git/objects/81:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     165 Nov 11 18:18 078be6dd8b31d35a89611b9efa319cf452edef
+-r--r--r-- 1 jackson jackson    2684 Oct 21 23:55 a8e2ae725f42436f5d202988104cc75c5e249d
+
+./.git/objects/e8:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:47 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     174 Nov 11 23:47 73be955a4305401a749440c80cf65e33ec0ca4
+-r--r--r-- 1 jackson jackson      48 Oct 21 23:55 a8778a3db9de671f2c669aeef7b49d891834bc
+
+./.git/objects/85:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 13:15 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     182 Oct 21 13:15 f69377cd81c16e5f6bb2831a8a2b1f28b48f04
+
+./.git/objects/info:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+
+./.git/objects/76:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:29 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     140 Nov 11 23:29 9940f8d51dc106bd3ab695e6cfcc5438d596b7
+
+./.git/objects/39:
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:06 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     148 Oct 18 23:39 15611a9a1b4618fbb50b233c604b8b79ef73cc
+-r--r--r-- 1 jackson jackson     177 Oct 22 00:06 a3acd3a17588513a891a62c743947da9f3dd67
+
+./.git/objects/a9:
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:14 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      53 Nov  4 20:14 45269c91d0acd81a7a787719515ea67c810a76
+
+./.git/objects/1d:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:58 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      97 Oct 18 21:58 c4be0b054048e4ca882370b3fa0338d2b8e099
+
+./.git/objects/1a:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson    2630 Nov 11 23:53 0fab52cc69416fcbd2ab95ef35e7afff0b61e8
+-r--r--r-- 1 jackson jackson     213 Oct 21 23:27 5503476f0f71eeeaceb05d9efad40690f387fa
+
+./.git/objects/e6:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 20:13 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      15 Oct 18 20:13 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+
+./.git/objects/6e:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:24 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      96 Oct 21 23:24 78de0c0ca0efd46067c30e5be36a94ee199e75
+
+./.git/objects/0f:
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:39 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     169 Oct 22 00:39 397ecb8d7cd996e46e6d26350741b5a3c7172d
+
+./.git/objects/72:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:29 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     125 Oct 18 21:29 e494c6983666297702bf3899f2f562aeb46279
+
+./.git/objects/31:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:06 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     164 Nov 11 23:06 70bd9b893fee748f46a7a3cea23c748dadd7e9
+
+./.git/objects/9d:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:41 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     177 Nov 11 18:41 c92dd75b7ba70abfb2123f9453d4b6a9579377
+
+./.git/objects/51:
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:40 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     176 Oct 22 00:40 780112421edd9366b6147ca23d92ccf6113abf
+
+./.git/objects/77:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:58 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     161 Oct 18 21:58 368679f408631292258837a9b5e64ec79780f9
+
+./.git/objects/67:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:30 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     148 Oct 18 21:30 364a699d0aa18b5f1ad842552cab77b46fb918
+
+./.git/objects/21:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:24 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     167 Oct 21 23:24 cd3d0dc8c2d0c2f89cd39511d601e8464ceb5a
+
+./.git/objects/75:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:24 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      53 Oct 21 23:24 4d4c4054065d166900bf692cf5ab8321d3b2f5
+
+./.git/objects/2d:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     217 Oct 21 23:27 b2fef47c71364f6071df2e165e80271eda5316
+
+./.git/objects/6a:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 23:38 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     480 Oct 18 23:38 a482a5354a639268f45911a89cc9731c394ce3
+
+./.git/objects/a0:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 23:39 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     179 Oct 18 23:39 b92a861afffa9ab93a37c342fe33dd0699d638
+
+./.git/objects/eb:
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:14 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     169 Nov  4 20:14 b8fc022c4538a58b0fa03343e02555907038cf
+
+./.git/objects/59:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:06 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     140 Nov 11 23:06 7cf5a90beb43d4bbeefabe3d0c8bed600ab4f8
+
+./.git/objects/ab:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:39 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     148 Oct 21 23:39 b930b24d4107c6037edaefe999bad8efdc5593
+
+./.git/objects/3c:
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:06 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     131 Oct 22 00:06 d8bff7e46f035bc693f7251c40b8ef5c856731
+
+./.git/objects/46:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     163 Oct 18 21:30 8a32c5dea6b29c4c2f9b6404125110c8a2a13d
+-r--r--r-- 1 jackson jackson     706 Nov 11 18:18 d7eaa62896d3cbc05d59119beb3a8828ec4bb6
+
+./.git/objects/e1:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     177 Nov 11 18:18 36b04d9b48d761e2779f2c98ef9073170f13a4
+
+./.git/objects/df:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:47 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     177 Nov 11 23:47 036ba3fb45b9b989693f50bb1d38d2c757b629
+
+./.git/objects/dd:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 13:15 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      52 Oct 21 13:15 526bfab8e48d69f035715d796df527d6387eb3
+
+./.git/objects/pack:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+
+./.git/objects/10:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     218 Oct 21 23:27 ba0051350df93f24b9c94e03cdd5ec7396f5d3
+
+./.git/objects/6c:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:46 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     588 Nov 11 23:46 703eb5d87c637744bb17f210fa6553f3b0b9ce
+-r--r--r-- 1 jackson jackson     177 Nov 11 23:06 91744706f8a812d83de8ee1bec637c9e8bc7de
+
+./.git/objects/8b:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:29 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     140 Oct 18 21:29 1fea011e1ec57e05e6adf23ab902065f67e8aa
+
+./.git/objects/40:
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:06 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     160 Oct 22 00:06 d56d4a53b5f214c2d7cb68b47c5b712c6c68e6
+-r--r--r-- 1 jackson jackson    1419 Oct 21 23:18 e39dd3b68eebf0b8ea1183ba3a1fc3b5a889f8
+
+./.git/objects/f4:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:48 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     148 Oct 21 23:48 ca41a595c16e204d98e067a0647b1221e565a0
+
+./.git/objects/5f:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:55 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     177 Oct 21 23:55 0f0b59044bd1d561e04ccf69a7b0df4f0261c6
+
+./.git/objects/d8:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:47 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     169 Oct 18 21:47 db5c2c10adb3dc7634c5a444610e7eb2df4f9a
+
+./.git/objects/38:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     159 Nov 11 23:53 011f472f118937fe994813d075f3e58efa6af6
+-r--r--r-- 1 jackson jackson     139 Oct 22 00:44 c926aa4286e9945c8149da92104827dbc33cdc
+
+./.git/objects/4e:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:48 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      53 Oct 21 23:48 a01666997b6b22378125c14d7d64629cf42c25
+
+./.git/objects/48:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     706 Nov 11 18:18 919b0fa35546ced98838cdef3896a0c49c788a
+
+./.git/objects/b1:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:48 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     152 Oct 21 23:48 88ff06e876bb50b064bf41110073827c19c44b
+
+./.git/objects/58:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:55 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     158 Oct 21 23:55 e1f13228eeb99f892aafdf0aac2a830a753f55
+
+./.git/objects/bd:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     140 Nov 11 23:53 4285a55dff03743a566b4597ca560343c76473
+
+./.git/objects/8f:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:41 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     169 Nov 11 18:41 09b6d5456c90cf5e8651752847cc6c0cf96e19
+
+./.git/objects/36:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:34 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     214 Oct 18 21:34 6c6bc889033d695067dda5b6ba99f76a5e3de8
+
+./.git/objects/f5:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:06 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     122 Oct 18 19:37 be756edd0ecf23ff9016ee127f03451a0ee796
+-r--r--r-- 1 jackson jackson    2574 Nov 11 23:06 d2459a5d2ea599726f87338023cec54c9991f0
+
+./.git/objects/73:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:30 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      53 Oct 18 21:30 df36c8f6b0b31f6d2d5b0b2ea8db20f6e44c4a
+
+./.git/objects/f2:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:29 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     118 Oct 18 20:16 0ba160e0dcdd03b1337b8a0927defdb0138bd1
+-r--r--r-- 1 jackson jackson     178 Nov 11 23:29 7ef69ec147c3a0d1c6b74c64ad01c8ce2b2cf5
+-r--r--r-- 1 jackson jackson      54 Oct 18 19:37 abdd2541cbb98c5b340344766648f296b84e32
+
+./.git/objects/a8:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     210 Oct 21 23:27 d6c267299221d20731de5fd3129c6eafff8afd
+
+./.git/objects/d1:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     656 Nov 11 18:18 1dd08bf141b611b3023a6a835e8605bc5773d6
+
+./.git/objects/6f:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:24 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     148 Oct 21 23:24 0095b31b61ace8c40381c01a6fcfad7485781b
+-r--r--r-- 1 jackson jackson     148 Oct 18 21:58 e52d50e45dd9ec60710e24cb391e00f1023fee
+
+./.git/objects/b4:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:48 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson    1460 Oct 21 23:48 89b59843fc21ecd4b28a0d1871350b2fa5d5ca
+
+./.git/objects/c4:
+drwxrwxr-x 2 jackson jackson    4096 Oct 19 18:08 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     723 Oct 19 18:08 8e415bc8bbc5d3664cc899b657d074902a7fce
+
+./.git/objects/d9:
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:05 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     162 Oct 22 00:05 ecbeccd718bac19d5ff17e398be5dbe822a4fc
+
+./.git/objects/f6:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     212 Nov 11 18:18 c102c03dc43552176004caea4d42af577f26e8
+
+./.git/objects/bc:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      42 Oct 18 19:37 13f81e93ad69574fedd70c86e7187feaa48f35
+
+./.git/objects/ea:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:40 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson    1152 Nov 11 18:40 35b6f13f08dbb7c41e28ef7ed04a03d3682b78
+
+./.git/objects/3b:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     229 Oct 21 23:27 29c62be9a299f5c528d9a8fa95ac5c37c9b23e
+
+./.git/objects/f3:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 20:16 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     189 Oct 18 20:16 03d99f1f93de59af95ef31d6bb2bb52106f723
+
+./.git/objects/3a:
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:13 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     141 Nov  4 20:13 ac38f72d6cc437230ea71d6da06619dbe7529f
+
+./.git/objects/b7:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:29 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     166 Nov 11 23:29 d18a8bcfdbe43409a909224acb18536d9fa092
+
+./.git/objects/55:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 23:39 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      53 Oct 18 23:39 be57b850aefe0ba1a86efa290cbd7177415a8e
+
+./.git/objects/5a:
+drwxrwxr-x 2 jackson jackson    4096 Oct 19 18:09 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     217 Oct 19 18:09 414e1b73c5bc6c019d4cacc546e83e1a4b73e1
+
+./.git/objects/27:
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:14 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     177 Nov  4 20:14 537ea0352729ed38e168c60ba6b4c3b54e43c5
+
+./.git/objects/7f:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:32 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     238 Oct 18 21:32 9ef6d85a9ce56f3f4fb33a23cb3d896a0e4930
+
+./.git/objects/f8:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:39 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     161 Oct 21 23:39 11cb87d6b9448b8742195d90b5075bf2f2c2b0
+
+./.git/objects/62:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     167 Nov 11 18:18 51603ed1315957fc0a073848c5eabf62c88f12
+-r--r--r-- 1 jackson jackson     148 Oct 19 18:09 965f51a3df6ac04ad7cd04e2a1450b03f9790b
+
+./.git/objects/28:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     113 Nov 11 18:18 37ee747699587dce29be9eecb90d38d4109631
+
+./.git/objects/45:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:40 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     193 Nov 11 18:40 2682227db8c125b1f3daa793b6f4757c6156b1
+
+./.git/objects/95:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     657 Nov 11 18:18 65812ecf3827a32980dce6fe2ec5b571e39cc8
+
+./.git/objects/8c:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 13:15 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     147 Oct 21 13:15 d3a6b895c5cb6bd741ffb28592411e0e7d1f2a
+
+./.git/objects/44:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     177 Nov 11 23:53 ba6bfdf46b154f801a6dfa750bf11d965b1d98
+
+./.git/objects/03:
+drwxrwxr-x 2 jackson jackson    4096 Nov  4 20:13 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson    1218 Nov  4 20:13 92b2d930b055c9b0bd00134ac1d9f6d6d173ef
+
+./.git/objects/3f:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     177 Nov 11 18:18 e68ab8676727ff4fd7f0919b3ffa90f714316d
+
+./.git/objects/d6:
+drwxrwxr-x 2 jackson jackson    4096 Oct 19 18:09 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson      53 Oct 19 18:09 81fef74275534a912fd68f88d62b55ad6ee289
+
+./.git/objects/6b:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 20:13 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     105 Oct 18 20:13 ce8dacef0d7047cb0ff9905dc1983032503290
+
+./.git/objects/12:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:40 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson    1554 Nov 11 18:40 4bee5c3a985408d5c839988301690d220c0e55
+
+./.git/objects/2b:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:29 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson    2602 Nov 11 23:29 8f3499b6ba7ad3b370a647645281e90288cdfa
+
+./.git/objects/d2:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:47 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     148 Oct 18 21:47 195751d254480adddf5bb6c5a479895eac7eb7
+
+./.git/objects/37:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     417 Oct 21 23:18 b851d8dea6ddf5ec156940329aa561b66b9006
+
+./.git/objects/f0:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:41 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     139 Nov 11 18:41 b26a2af5140a2bfe023114cd86dfc788634b43
+
+./.git/objects/0a:
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:40 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     180 Oct 22 00:40 c87a02ffe2bd32c16a84b601c9ad77dbc1f4c2
+
+./.git/objects/f9:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:47 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     128 Nov 11 23:47 e0667dc3abac3bab63c1b2f3b6926f486a0c90
+
+./.git/objects/86:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 18:18 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     113 Nov 11 18:18 c3408e92c0903da25616433705c0be2334bbfb
+
+./.git/objects/78:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     210 Oct 21 23:27 9ac32f9df0ffc24f7acbe659ce5edc065db2f4
+
+./.git/objects/9e:
+drwxrwxr-x 2 jackson jackson    4096 Oct 22 00:48 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     142 Oct 22 00:48 8a2e8f7945329fa6a2ad3183dc4b9e45860c24
+
+./.git/objects/5b:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 13:14 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson    1150 Oct 21 13:14 7f80ef78b6fb4462312975eb8a7d3a05f34318
+-r--r--r-- 1 jackson jackson     452 Oct 21 13:14 e0eab3f9ebe600228f38225b0a762c5c8ded2c
+
+./.git/objects/61:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 21:46 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     232 Oct 18 21:46 e4ed42d98ff3387e3fd3e538b1b08b62578009
+
+./.git/objects/cb:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:39 .
+drwxrwxr-x 93 jackson jackson    4096 Nov 11 23:53 ..
+-r--r--r-- 1 jackson jackson     154 Oct 21 23:39 7f96e217dcab56ab67ccacdbabe6d04df66f6c
+
+./.git/logs/refs:
+drwxrwxr-x 4 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 ..
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:51 heads
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 remotes
+
+./.git/refs/remotes/origin:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:53 .
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 ..
+-rw-rw-r-- 1 jackson jackson      41 Oct 21 23:26 exec
+-rw-rw-r-- 1 jackson jackson      32 Oct 18 19:37 HEAD
+-rw-rw-r-- 1 jackson jackson      41 Nov 11 23:53 master
+
+./.git/logs/refs/remotes:
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 .
+drwxrwxr-x 4 jackson jackson    4096 Oct 18 19:37 ..
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 origin
+
+./.git/logs/refs/heads:
+drwxrwxr-x 2 jackson jackson    4096 Oct 18 19:51 .
+drwxrwxr-x 4 jackson jackson    4096 Oct 18 19:37 ..
+-rw-rw-r-- 1 jackson jackson    1758 Oct 21 23:24 exec
+-rw-rw-r-- 1 jackson jackson    2392 Nov 11 23:53 master
+
+./.git/logs/refs/remotes/origin:
+drwxrwxr-x 2 jackson jackson    4096 Oct 21 23:27 .
+drwxrwxr-x 3 jackson jackson    4096 Oct 18 19:37 ..
+-rw-rw-r-- 1 jackson jackson    1152 Oct 21 23:26 exec
+-rw-rw-r-- 1 jackson jackson     178 Oct 18 19:37 HEAD
+-rw-rw-r-- 1 jackson jackson    2044 Nov 11 23:53 master
+
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ /[Kbin [K/ls -[Kl[K/home
+jackson  
+
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ bin/ls /home src
+/home:
+jackson  
+
+src:
+a.out     cp.cpp    ls.cpp    main.cpp  Timer.h   
+
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ bin/ls /home src srcasrc[C[1Psrcasrc[1Psrc[1Psrcasrc src
+ls: cannot access a: No such file or directory
+/home:
+jackson  
+
+src:
+a.out     cp.cpp    ls.cpp    main.cpp  Timer.h   
+
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ bin/ls -p[KPFOWAKE[K[K[K[K[K[K[Ka[KPPP[K[K[K[K-APOAWFOEP
+ls: invalid option -- 'A'
+Available flags: -a -R -l
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ bin [K/ls -hel[K[K[Khello
+ls: invalid option -- 'h'
+Available flags: -a -R -l
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ bn[Kin/s[Kls -al[K[KlR [K[KR /hom[K[K[K[K[K[K [Ka /[K/home src
+/home:
+drwxr-xr-x 3 root root    4096 Oct 16 00:34 .
+drwxr-xr-x 24 root root    4096 Nov  4 20:49 ..
+drwxr-xr-x 26 jackson jackson    4096 Nov 11 23:53 jackson
+
+src:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:54 .
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 23:54 ..
+-rwxrwxr-x 1 jackson jackson  152005 Nov 11 23:18 a.out
+-rw-rw-r-- 1 jackson jackson    2213 Nov 11 18:18 cp.cpp
+-rw-rw-r-- 1 jackson jackson    7934 Nov 11 23:53 ls.cpp
+-rw-rw-r-- 1 jackson jackson    3722 Nov  9 16:43 main.cpp
+-rw-rw-r-- 1 jackson jackson    2256 Nov 11 18:18 Timer.h
+
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ bin/ls -la /home src [K[K[K[K[K[K[K[K[K[K[K[K[Ka /home /[Ksrc l[K-l
+/home:
+drwxr-xr-x 3 root root    4096 Oct 16 00:34 .
+drwxr-xr-x 24 root root    4096 Nov  4 20:49 ..
+drwxr-xr-x 26 jackson jackson    4096 Nov 11 23:53 jackson
+
+src:
+drwxrwxr-x 2 jackson jackson    4096 Nov 11 23:54 .
+drwxrwxr-x 6 jackson jackson    4096 Nov 11 23:54 ..
+-rwxrwxr-x 1 jackson jackson  152005 Nov 11 23:18 a.out
+-rw-rw-r-- 1 jackson jackson    2213 Nov 11 18:18 cp.cpp
+-rw-rw-r-- 1 jackson jackson    7934 Nov 11 23:53 ls.cpp
+-rw-rw-r-- 1 jackson jackson    3722 Nov  9 16:43 main.cpp
+-rw-rw-r-- 1 jackson jackson    2256 Nov 11 18:18 Timer.h
+
+]0;jackson@jlaptop: ~/Repos/rshelljackson@jlaptop:~/Repos/rshell$ exit
+exit
+
+Script done on Tue 11 Nov 2014 11:57:56 PM PST

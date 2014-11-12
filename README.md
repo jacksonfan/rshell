@@ -1,40 +1,29 @@
 rshell
 ======
 
-Licensing Information: Read LICENSE
----
-
-Project Source Location
----
-
-https://github.com/jfan013/rshell.git
-
 Author and Contributors
 ---------
-
-Mike Izbicki
-
-Taeyoung Kim
-
 Jackson Fan
 
-Various users on Stackoverflow
 
-File List
-------
+Installing and Removing the Program
+----------
 
-LICENSE
+1. Open a bash terminal
+2. Clone my repository by typing 
+'git clone https://github.com/jfan013/rshell.git'
+3. Now, enter the repository using 'cd rshell'
+4. Type 'make'
+5. The code is now compiled. Type 'bin/' followed by the command name
+to run the command Ex: 'bin/rshell'
 
-Makefile
-
-README.md
-
-./src
-
-./tests
+* To remove the program, run 'make clean'
 
 BUGS
 ===
+
+rshell
+-----
 
 * && operator will run every function on the line, regardless of failure
 * || does not run properly. It executes the last input only 
@@ -42,6 +31,13 @@ BUGS
 * Program does not differentiate between && and & or || and |
 * A lot of commented out code, causing readability issues
 
+ls
+---
 
+* Spacing on output has issues for each flag
+* No color has been implemented
+* Has a set amount of files per line (Is not dynamic)
+* Does not sort exactly according to ls
+* Did not implement total blocks in -l flag
 
 

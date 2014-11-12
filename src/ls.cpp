@@ -31,12 +31,12 @@ int largestSize(vector <dirent*> check)
 	return count;
 }
 
-void printDIRS(vector <dirent*> toPrint, int flags, const char* dir, int error) 
+void printDIRS(vector <dirent*> toPrint, int flags, const char* dir) 
 {
-	if ((flags & FLAG_R) || (error))
+	/*if ((flags & FLAG_R) || (error))
 	{
 		cout << dir << ":" << endl;
-	}
+	}*/
 	if (flags & FLAG_l)
 	{
 		for (unsigned i = 0; i < toPrint.size(); i++)
@@ -385,10 +385,12 @@ int main(int argc, char **argv)
 			
 		}
 				
-			
-
 		mergeSort(allDIRS);
-		printDIRS(allDIRS, flags, dirNames.at(a), errorCheck);
+		if (flags & FLAG_R || errorCheck || dirNames.size() > 1)
+		{
+			cout << dirNames.at(a) << ":" << endl;
+		}
+		printDIRS(allDIRS, flags, dirNames.at(a));
 
 		if (closedir(dirp) == -1)
 		{
@@ -399,7 +401,7 @@ int main(int argc, char **argv)
 		allDIRS.clear();
 	}	
 
-	for (unsigned i = 1; i < dirNames.size(); i++)
+	for (unsigned i = 1; i < dirNames.size()-1; i++)
 	{
 		delete [] dirNames.at(i);
 	}

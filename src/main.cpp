@@ -95,20 +95,20 @@ void checkFork(int pid, char** argv)
 {
 	if (pid == -1)	//Detects for error in fork
 	{
-		perror("An error has occurred with fork");
+		perror("Fork");
 		exit(1);
 	}
 	else if (pid == 0)	//This is the child process
 	{
 		execvp(argv[0], argv);
-		perror("An error has occured with execvp");
+		perror("Execvp");
 		exit(1);
 	}
 	else if (pid > 0)	//This is the parent process
 	{
 		if (wait(NULL) == -1)	//Checks for error
 		{				//In waitpid
-			perror("An error has occurred with waitpid");
+			perror("Waitpid");
 			exit(1);
 		}
 	}
@@ -158,6 +158,10 @@ int main()
 			forkID = fork();
 			checkFork(forkID, argv1[i]);
 		}
+		for (int i = 0; argv1[i] != NULL; i++)
+		{
+			memset(argv1[i], 0, 1024);
+		}
 		memset(argv1, 0, 1024);
 		memset(argv, 0, 1024);
 		memset(checkComment, 0, 1024);
@@ -165,13 +169,6 @@ int main()
 		memset(hostname, 0, 1024);
 		memset(userinput, 0, 1024);
 		
-		/*memContainer(argv1);
-		mem2DArray(argv);
-		mem2DArray(checkComment);
-		mem2DArray(checkOR);
-		memArray(hostname);
-		memArray(userinput);
-		memArray(login);	*/
 	} while (true);
 
 	for (int i = 0; argv1[i] != NULL; i++)

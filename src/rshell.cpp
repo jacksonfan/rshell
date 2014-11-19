@@ -42,30 +42,82 @@ void displayNames(char* login, char* hostname)
 
 void parseComments(char* parseThis)
 {
-	char* temp = strtok(parseThis, "#");
-	strcpy(parseThis, temp);
+	if (parseThis != NULL)
+	{
+		char* temp = strtok(parseThis, "#");
+		if (temp != NULL)
+		{
+			char* temp1 = new char[strlen(temp) + 1];
+			memset(temp1, 0, strlen(temp) + 1);
+			strcpy(temp1, temp);
+			strcpy(parseThis, temp1);
+			delete [] temp1;
+		}
+	}
 }
 
-char* parseOperators(char* toParse)
+void parseInpOP(char* toParse)
 {
 	char* temp = NULL;
-	char* toRun = new char[strlen(toParse)];
-	memset(toParse, 0, sizeof(toParse)*(strlen(toParse)));
-	if ((strchr(toParse, '<') = temp) != NULL)
+	while ((temp = strchr(toParse, '<')) != NULL)
 	{
+		char* toRun = new char[strlen(toParse)+1];
+		memset(toRun, 0, strlen(toParse)+1);
 		size_t cutOff = strlen(toParse) - strlen(temp);
-		toRun = strcat(toRun, toParse, cutOff*sizeof(toParse));
+		toRun = strncat(toRun, toParse, cutOff);
+		toRun = strcat(toRun, " ");
 		toRun = strcat(toRun, temp+1);
+		strcpy(toParse, toRun);
+		delete [] toRun;
+	}
+}
+
+void addSpaces(char*& toParse, char*& addSpace, const char* op, int i)
+{
+	addSpace = new char[strlen(toParse) + 3];
+	memset(addSpace, 0, strlen(toParse)+3);
+	addSpace = strncat(addSpace, toParse, i);
+	addSpace = strcat(addSpace, op);
+	if (strcmp(op, " >> ") == 0)
+	{
+		addSpace = strcat(addSpace, toParse+i+2);
 	}
 	else
 	{
-		delete [] toRun;
-		return toParse;
+		addSpace = strcat(addSpace, toParse+i+1); 
 	}
-	return toRun;
+	delete [] toParse;
+	toParse = new char[strlen(addSpace)+1];
+	memset(toParse, 0, strlen(addSpace)+1);
+	strcpy(toParse, addSpace);
+	delete [] addSpace; 
+	addSpace = 0;
 }
 
-
+void parseIO(char*& toParse)
+{
+	char* addSpace = NULL;
+	for (int i = 0; toParse[i]; i++)
+	{
+		if (toParse[i] == '|')
+		{
+			addSpaces(toParse, addSpace, " | ", i);
+			i++;
+		}
+		else if (toParse[i] == '>')
+		{
+			if (toParse[i+1] == '>')
+			{
+				addSpaces(toParse, addSpace, " >> ", i);
+			}
+			else
+			{
+				addSpaces(toParse, addSpace, " > ", i);
+			}
+			i++;
+		}
+	}
+}
 int main()
 {
 	char login[256] = {'\0'};
@@ -79,20 +131,26 @@ int main()
 		string input = "";
 		getline(cin, input);
 		char* toParse = new char[input.length()+1];
-		memset(toParse, 0, sizeof(toParse)*(input.length()+1)); 
-		strcpy(toParse, input.c_str());
-		parseComments(toParse);
-		//Put logic parsing here. To do after hw2. Strncpy
-		char* toRun = parseOperators(toParse);		
+		memset(toParse, 0, input.length()+1);
+		int hello = 0;
+		if (input != "")
+		{
+			strcpy(toParse, input.c_str());
+			parseComments(toParse); // Parse for #s only
+			parseInpOP(toParse); //Parse for < only
+			parseIO(toParse);
+		}
+		hello++;
+		if (strcmp(toParse, "exit") == 0)
+		{
+			break;
+		}
 
 
-
-
-
-
+		delete [] toParse;
+		toParse = 0;
 	}
 	
-
 
 	return 0;
 }

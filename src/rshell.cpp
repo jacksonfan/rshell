@@ -230,6 +230,11 @@ void executeLine(char** argv)
 						perror("dup2");
 						exit(1);
 					}
+					if (close(fd[1]) == -1)
+					{
+						perror("close");
+						exit(1);
+					}
 					if (-1 == execvp(toRun[0], toRun))
 					{
 						perror("execvp");
@@ -247,6 +252,11 @@ void executeLine(char** argv)
 						perror("dup2");
 						exit(1);
 					}
+					if (close(fd[1]) == -1)
+					{
+						perror("close");
+						exit(1);
+					}
 
 					if (-1 == execvp(toRun[0], toRun))
 					{
@@ -256,6 +266,12 @@ void executeLine(char** argv)
 				}
 				else if (flags == NULL)
 				{
+					if (close(fd[0]) == -1 ||
+						close(fd[1] == -1))
+					{
+						perror("close");
+						exit(1);
+					}
 					if (-1 == execvp(toRun[0], toRun))
 					{
 						perror("execvp");
@@ -282,7 +298,8 @@ void executeLine(char** argv)
 					exit(1);
 				}
 			}
-			else if (strcmp(prevFlag, ">") == 0)
+			else if (strcmp(prevFlag, ">") == 0 ||
+				strcmp(prevFlag, ">>") == 0)
 			{
 				if (close(fd[1]) == -1)
 				{
@@ -290,7 +307,17 @@ void executeLine(char** argv)
 					exit(1);
 				}
 				char buf[BUFSIZ] = {0};
-				int fileD =open(toRun[0],O_CREAT|O_WRONLY,0666);
+				int fileD = 0;
+				if (strcmp(prevFlag, ">") == 0)
+				{
+					fileD = open(toRun[0],
+						O_CREAT | O_WRONLY, 0644);
+				}
+				else if (strcmp(prevFlag, ">>") == 0)
+				{
+					fileD = open(toRun[0], O_CREAT |
+						O_WRONLY | O_APPEND, 0644);
+				}
 				if (fileD == -1)
 				{
 					perror("open");
@@ -318,6 +345,11 @@ void executeLine(char** argv)
 			}	
 			else if (strcmp(prevFlag, "<") == 0)
 			{
+				if (close(fd[1]) == -1)
+				{
+					perror("close");
+					exit(1);
+				}
 				if (flags == NULL)
 				{
 					int readCheck = 0;
@@ -338,13 +370,7 @@ void executeLine(char** argv)
 						}
 					}
 				}
-				if (close(fd[1]) == -1)
-				{
-					perror("close");
-					exit(1);
-				}
 			}
-
 					
 		}
 		else if (pid > 0)
@@ -362,8 +388,11 @@ void executeLine(char** argv)
 		delete [] toRun;
 		delete [] temp;
 	}
-	close(fd[0]);
-	close(fd[1]);
+	if ((close(fd[0]) == -1) || (close(fd[1]) == -1))
+	{
+		perror("close");
+		exit(1);
+	}
 }	
 int main()
 {

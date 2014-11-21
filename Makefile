@@ -11,9 +11,9 @@ bin:
 	[ ! -d bin ]
 	mkdir -p bin;
 
-rshell: src/main.cpp
+rshell: src/rshell.cpp
 	
-	$(compiler) $(flags) src/main.cpp -o bin/rshell 
+	$(compiler) $(flags) src/rshell.cpp -o bin/rshell 
 
 ls:	src/ls.cpp
 	

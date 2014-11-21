@@ -8,6 +8,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <pwd.h>
+#include <fcntl.h>
+
 
 using namespace std;
 
@@ -154,48 +156,55 @@ void parseSpace(char* toParse, char**& argv)
 int getSize(char** argv)
 {
 	int i = 0;
-	for (; argv[i]; i++);
+	for (i = 0; argv[i]; i++);
 	return i;
 }
 
 void executeLine(char** argv)
 {
-	int fd[2] = {0, 0};
+	int fd[2];
 	if (pipe(fd) == -1)
 	{
 		perror("pipe");
 		exit(1);
 	}
-	char* flags = NULL;
-	int run = 0;
-
+	char* flags = 0;
+	char* prevFlag = 0;
 	for (int i = 0; argv[i]; i++)
 	{
 		char** temp = new char*[getSize(argv)+1];
-		memset(temp, 0, getSize(argv)+1);
-		for (int j = 0; argv[i] &&
-		      strchr(argv[i], '<') == NULL &&
-		      strchr(argv[i], '>') == NULL &&
-		      strchr(argv[i], '|') == NULL; j++)
+		for (int p = 0; p < getSize(argv)+1; p++)
 		{
-			temp[j] = argv[i];	
+			temp[p] = 0;
+		}
+		char* holder = 0;
+		for (int j = 0; (argv[i]) && (argv[i][0] != '>')
+					&& (argv[i][0] != '<')
+					&& (argv[i][0] != '|'); j++)
+		{
+			holder = new char[strlen(argv[i])+1];
+			memset(holder, 0, strlen(argv[i])+1);
+			temp[j] = strcpy(holder, argv[i]);
 			i++;
 		}
-		if (!argv[i])
+		char** toRun = new char*[getSize(temp)+2];
+		for (int p = 0; p < getSize(temp)+2; p++)
+		{
+			toRun[p] = 0;
+		}
+		for (int j = 0; j < getSize(temp)+1; j++)
+		{
+			toRun[j] = temp[j];
+		}
+		if (argv[i] == NULL)
 		{
 			i--;
 		}
-		else if (argv[i])
+		else if (argv[i] != NULL)
 		{
 			flags = argv[i];
 		}
-		char** toRun = new char*[getSize(temp)+1]; 
-		memset(toRun, 0, getSize(temp)+1);
-		for (int k = 0; temp[k]; k++)
-		{
-			strcpy(toRun[k], temp[k]);
-		}
-		delete [] temp;
+		
 		int pid = fork();
 		if (pid == -1)
 		{
@@ -204,28 +213,154 @@ void executeLine(char** argv)
 		}
 		else if (pid == 0) //CHILD
 		{
-			if (strcmp(flags, "|") == 0)
+			if (prevFlag == NULL)
 			{
-				close(fd[0]);
-				if (dup2(fd[1], STDOUT_FILENO) == -1)
+				if (close(fd[0]) == -1)
+				{
+					perror("close");
+					exit(1);
+				}
+				if ((flags != NULL) && 
+					(strcmp(flags, "|") == 0 || 
+					strcmp(flags, ">") == 0 || 
+					strcmp(flags, ">>") == 0))
+				{
+					if (-1 == dup2(fd[1], STDOUT_FILENO))
+					{
+						perror("dup2");
+						exit(1);
+					}
+					if (-1 == execvp(toRun[0], toRun))
+					{
+						perror("execvp");
+						exit(1);
+					}
+				}
+				if (flags != NULL && strcmp(flags,"<") == 0)
+				{
+					toRun[getSize(toRun)] = argv[i+1];
+					i++;
+					prevFlag = flags;
+					flags = argv[i+2];
+					if (dup2(fd[1], STDOUT_FILENO) == -1)
+					{
+						perror("dup2");
+						exit(1);
+					}
+
+					if (-1 == execvp(toRun[0], toRun))
+					{
+						perror("execvp");
+						exit(1);
+					}
+				}
+				else if (flags == NULL)
+				{
+					if (-1 == execvp(toRun[0], toRun))
+					{
+						perror("execvp");
+						exit(1);
+					}
+				}
+
+			}
+			else if (strcmp(prevFlag, "|") == 0)
+			{
+				if (close(fd[1]) == -1)
+				{
+					perror("close");
+					exit(1);
+				}
+				if (dup2(fd[0], STDIN_FILENO) == -1)
 				{
 					perror("dup2");
 					exit(1);
-				}	
-				execvp(toRun[0], toRun);
-				perror("execvp");
-				exit(1);
+				}
+				if (execvp(toRun[0], toRun) == -1)
+				{
+					perror("execvp");
+					exit(1);
+				}
 			}
+			else if (strcmp(prevFlag, ">") == 0)
+			{
+				if (close(fd[1]) == -1)
+				{
+					perror("close");
+					exit(1);
+				}
+				char buf[BUFSIZ] = {0};
+				int fileD =open(toRun[0],O_CREAT|O_WRONLY,0666);
+				if (fileD == -1)
+				{
+					perror("open");
+					exit(1);
+				}
+				int readCheck = 0;
+				while ((readCheck = read(fd[0], &buf, BUFSIZ)))
+				{
+					if (readCheck == -1)
+					{
+						perror("read");
+						exit(1);
+					}
+					if (write(fileD, buf, BUFSIZ) == -1)
+					{
+						perror("write");
+						exit(1);
+					}
+				}
+				if (close(fileD) == -1)
+				{
+					perror("close");
+					exit(1);
+				}
+			}	
+			else if (strcmp(prevFlag, "<") == 0)
+			{
+				if (flags == NULL)
+				{
+					int readCheck = 0;
+					char buf[BUFSIZ] = {0};
+					while ((readCheck = 
+						read(fd[0], &buf, BUFSIZ)))
+					{
+						if (readCheck == -1)
+						{
+							perror("read");
+							exit(1);
+						}
+						if (write(1, buf, readCheck)
+							== -1)
+						{
+							perror("write");
+							exit(1);
+						}
+					}
+				}
+				if (close(fd[1]) == -1)
+				{
+					perror("close");
+					exit(1);
+				}
+			}
+
+					
 		}
 		else if (pid > 0)
 		{
-			if (wait(NULL) == -1)
+			if (-1 == wait(NULL))
 			{
 				perror("wait");
 				exit(1);
 			}
+
 		}
-		run++;
+		prevFlag = flags;
+		flags = NULL;
+			
+		delete [] toRun;
+		delete [] temp;
 	}
 	close(fd[0]);
 	close(fd[1]);
@@ -253,7 +388,7 @@ int main()
 			char** argv = new char*[strlen(toParse)+1];
 			memset(argv, 0, strlen(toParse)+1);
 			parseSpace(toParse, argv);
-	//		executeLine(argv);
+			executeLine(argv);
 
 
 
@@ -265,7 +400,6 @@ int main()
 		{
 			break;
 		}
-
 
 		delete [] toParse;
 		toParse = 0;

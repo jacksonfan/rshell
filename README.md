@@ -31,6 +31,17 @@ rshell
 * Program does not differentiate between && and & or || and |
 * A lot of commented out code, causing readability issues
 
+
+rshell piping
+----
+* Huge bug with wc/cat: does not terminate wc/cat (waits for more input)
+* Does not have logic operators implemented
+* Occassionally expresses bad file descriptor arguments
+* Contains several uses of heap allocation
+* Only few combinations of i/o work
+* Piping cannot be considered working. At best, can use one pipe to output
+* < and > possibly have strange interactions
+
 ls
 ---
 

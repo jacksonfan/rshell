@@ -187,8 +187,8 @@ void executeLine(char** argv)
 			temp[j] = strcpy(holder, argv[i]);
 			i++;
 		}
-		char** toRun = new char*[getSize(temp)+2];
-		for (int p = 0; p < getSize(temp)+2; p++)
+		char** toRun = new char*[getSize(temp)+3];
+		for (int p = 0; p < getSize(temp)+3; p++)
 		{
 			toRun[p] = 0;
 		}
@@ -224,8 +224,8 @@ void executeLine(char** argv)
 					(strcmp(flags, "|") == 0 || 
 					strcmp(flags, ">") == 0 || 
 					strcmp(flags, ">>") == 0))
-				{
-					if (-1 == dup2(fd[1], STDOUT_FILENO))
+				{	
+					if (dup2(fd[1], STDOUT_FILENO) == -1)
 					{
 						perror("dup2");
 						exit(1);
@@ -235,23 +235,22 @@ void executeLine(char** argv)
 						perror("close");
 						exit(1);
 					}
-					if (-1 == execvp(toRun[0], toRun))
+					if (execvp(toRun[0], toRun) == -1)
 					{
 						perror("execvp");
 						exit(1);
 					}
 				}
-				if (flags != NULL && strcmp(flags,"<") == 0)
+				else if (flags != NULL && strcmp(flags,"<") == 0)
 				{
 					toRun[getSize(toRun)] = argv[i+1];
 					i++;
-					prevFlag = flags;
-					flags = argv[i+2];
 					if (dup2(fd[1], STDOUT_FILENO) == -1)
 					{
 						perror("dup2");
 						exit(1);
 					}
+
 					if (close(fd[1]) == -1)
 					{
 						perror("close");
@@ -266,8 +265,7 @@ void executeLine(char** argv)
 				}
 				else if (flags == NULL)
 				{
-					if (close(fd[0]) == -1 ||
-						close(fd[1] == -1))
+					if (close(fd[1] == -1))
 					{
 						perror("close");
 						exit(1);
@@ -282,15 +280,27 @@ void executeLine(char** argv)
 			}
 			else if (strcmp(prevFlag, "|") == 0)
 			{
-				if (close(fd[1]) == -1)
-				{
-					perror("close");
-					exit(1);
-				}
 				if (dup2(fd[0], STDIN_FILENO) == -1)
 				{
 					perror("dup2");
 					exit(1);
+				}
+				if (close(fd[0]) == -1)
+				{
+					perror("close");
+				}
+				if ((flags != NULL) && (strcmp(flags, "|") == 0))
+				{
+					if (dup2(fd[1], STDOUT_FILENO) == -1)
+					{
+						perror("dup2");
+						exit(1);
+					}
+					if (close(fd[1]) == -1)
+					{
+						perror("close");
+						exit(1);
+					}
 				}
 				if (execvp(toRun[0], toRun) == -1)
 				{
@@ -301,11 +311,6 @@ void executeLine(char** argv)
 			else if (strcmp(prevFlag, ">") == 0 ||
 				strcmp(prevFlag, ">>") == 0)
 			{
-				if (close(fd[1]) == -1)
-				{
-					perror("close");
-					exit(1);
-				}
 				char buf[BUFSIZ] = {0};
 				int fileD = 0;
 				if (strcmp(prevFlag, ">") == 0)
@@ -371,6 +376,7 @@ void executeLine(char** argv)
 					}
 				}
 			}
+			exit(1);
 					
 		}
 		else if (pid > 0)
@@ -388,9 +394,14 @@ void executeLine(char** argv)
 		delete [] toRun;
 		delete [] temp;
 	}
-	if ((close(fd[0]) == -1) || (close(fd[1]) == -1))
+	if ((close(fd[0]) == -1))
 	{
-		perror("close");
+		perror("close3");
+		exit(1);
+	}
+	if ((close(fd[1]) == -1))
+	{
+		perror("close2");
 		exit(1);
 	}
 }	

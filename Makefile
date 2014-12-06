@@ -1,5 +1,5 @@
-compiler = "g++"
-flags =-Wall -Werror -ansi -pedantic
+compiler=g++
+flags=-Wall -Werror -ansi -pedantic
 
 all:	bin\
 	rshell\

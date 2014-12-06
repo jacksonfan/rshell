@@ -50,6 +50,7 @@ void parseInput(char** argv, const string input)
 	char* cinput = new char[input.size()+1];
 	memset(cinput, 0, input.size()+1);
 	cinput = strcpy(cinput, input.c_str());
+	cinput = strtok(cinput, "#");
 	char* temp = 0;
 	temp = strtok(cinput, " ");
 	for (int i = 0; temp != NULL; i++)
@@ -66,6 +67,8 @@ void forkAndExec(char** argv, const string input)
 {
 	char* command = new char[1024];
 	memset(command, 0, 1024);
+	char* tempPath = new char[strlen(getenv("PATH"))];
+	memset(tempPath, 0, strlen(getenv("PATH")));
 	parseInput(argv, input);
 	int pid = fork();
 	if (pid == -1)
@@ -81,7 +84,8 @@ void forkAndExec(char** argv, const string input)
 			exit(1);
 		}
 		char* path = getenv("PATH");
-		char* temp = strtok(path, ":");
+		tempPath = strcpy(tempPath, path);
+		char* temp = strtok(tempPath, ":");
 		string theCom = argv[0];
 		for (int i = 0; temp != NULL; i++)
 		{	

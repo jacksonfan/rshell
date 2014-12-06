@@ -45,9 +45,10 @@ rshell piping
 signals
 ---
 
-* Make does not currently work
 * Ctrl+C does not print a newline immediately after
 * Have not implemented Ctrl+Z, fg, or bg
+* No logic operators are implemented
+* No piping or i/o redirection is implemented
 
 ls
 ---

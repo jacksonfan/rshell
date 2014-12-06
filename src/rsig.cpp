@@ -210,11 +210,11 @@ int main()
 		perror("signal");
 		exit(1);
 	}
-	if (signal(SIGTSTP, sigZ) == SIG_ERR)
+	/*if (signal(SIGTSTP, sigZ) == SIG_ERR)
 	{
 		perror("signal");
 		exit(1);
-	}
+	}*/
 	cout << "Entering shell: " << endl;
 	while(1)
 	{

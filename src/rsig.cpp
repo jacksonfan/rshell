@@ -8,8 +8,11 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <vector>
 
 using namespace std;
+
+vector <int> stoppedChild;
 
 void sigC(int sig)
 {
@@ -22,6 +25,38 @@ void sigC(int sig)
 	{
 		perror("kill");
 		exit(1);
+	}
+}
+
+void sigZ(int sig)
+{
+	if (signal(sig, SIG_DFL) == SIG_ERR)
+	{
+		perror("signal DFL");
+		exit(1);
+	}
+	stoppedChild.push_back(getpid());
+	if (kill(getpid(), sig) == -1)
+	{
+		perror("kill");
+		exit(1);
+	}
+}
+
+void sendCont(string input)
+{
+	if (input == "fg")
+	{
+		if (stoppedChild.size() < 1)
+		{
+			printf("%s: current: no such job", input.c_str());
+		}
+		else if (kill(stoppedChild.at(stoppedChild.size()-1), SIGCONT) == -1)
+		{
+			perror("kill");
+			exit(1);
+		}
+		stoppedChild.pop_back();
 	}
 }
 
@@ -51,6 +86,11 @@ void parseInput(char** argv, const string input)
 	memset(cinput, 0, input.size()+1);
 	cinput = strcpy(cinput, input.c_str());
 	cinput = strtok(cinput, "#");
+	if (strlen(cinput) == 0)
+	{
+		delete [] cinput;
+		return;
+	}
 	char* temp = 0;
 	temp = strtok(cinput, " ");
 	for (int i = 0; temp != NULL; i++)
@@ -83,6 +123,11 @@ void forkAndExec(char** argv, const string input)
 			perror("signal");
 			exit(1);
 		}
+		if (signal(SIGTSTP, sigZ) == SIG_ERR)
+		{
+			perror("signal");
+			exit(1);
+		}
 		char* path = getenv("PATH");
 		tempPath = strcpy(tempPath, path);
 		char* temp = strtok(tempPath, ":");
@@ -102,7 +147,6 @@ void forkAndExec(char** argv, const string input)
 			perror("execv");
 			exit(1);
 		}
-		//execvp(argv[0], argv);
 	}
 	else if (pid > 0)
 	{
@@ -166,19 +210,32 @@ int main()
 		perror("signal");
 		exit(1);
 	}
+	if (signal(SIGTSTP, sigZ) == SIG_ERR)
+	{
+		perror("signal");
+		exit(1);
+	}
 	cout << "Entering shell: " << endl;
 	while(1)
 	{
 		currDIR = getcwd(currDIR, 1024);
 		cout << currDIR << "$ ";
 		getline(cin, input);
-		if(input == "exit")
+		if(input == "" || input.at(0) == '#')
+		{
+			continue;
+		}
+		else if(input == "exit")
 		{
 			break;
 		}
-		if(input.substr(0, 3) == "cd " || input == "cd")
+		else if(input.substr(0, 3) == "cd " || input == "cd")
 		{
 			runCD(input);
+		}
+		else if(input == "fg" || input == "bg")
+		{
+			sendCont(input);
 		}
 		else
 		{

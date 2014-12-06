@@ -41,6 +41,13 @@ rshell piping
 * Only few combinations of i/o work
 * Piping cannot be considered working. At best, can use one pipe to output
 * < and > possibly have strange interactions
+ 
+signals
+---
+
+* Make does not currently work
+* Ctrl+C does not print a newline immediately after
+* Have not implemented Ctrl+Z, fg, or bg
 
 ls
 ---

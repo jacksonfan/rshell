@@ -1,4 +1,3 @@
-
 compiler = "g++"
 flags =-Wall -Werror -ansi -pedantic
 
@@ -11,9 +10,9 @@ bin:
 	[ ! -d bin ]
 	mkdir -p bin;
 
-rshell: src/rshell.cpp
+rshell: src/rsig.cpp
 	
-	$(compiler) $(flags) src/rshell.cpp -o bin/rshell 
+	$(compiler) $(flags) src/rsig.cpp -o bin/rshell 
 
 ls:	src/ls.cpp
 	

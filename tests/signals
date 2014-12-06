@@ -1,0 +1,135 @@
+Script started on Sat 06 Dec 2014 12:13:51 AM PST
+~
+jfan013@hammer $ cd rshell
+~/rshell
+jfan013@hammer $ make
+g++ -Wall -Werror -ansi -pedantic src/rsig.cpp -o bin/rshell 
+g++ -Wall -Werror -ansi -pedantic src/ls.cpp -o bin/ls
+g++ -Wall -Werror -ansi -pedantic src/cp.cpp -o bin/cp
+~/rshell
+jfan013@hammer $ ./[K[Kbin/rshell
+Entering shell: 
+/home/csmajs/jfan013/rshell$ #Single bash commadns   nds
+/home/csmajs/jfan013/rshell$ echo "hello world"
+"hello world"
+/home/csmajs/jfan013/rshell$ ls
+bin  LICENSE  Makefile	README.md  src	tests
+/home/csmajs/jfan013/rshell$ cat Makefile
+compiler=g++
+flags=-Wall -Werror -ansi -pedantic
+
+all:	bin\
+	rshell\
+	ls\
+	cp
+
+bin:	
+	[ ! -d bin ]
+	mkdir -p bin;
+
+rshell: src/rsig.cpp
+	
+	$(compiler) $(flags) src/rsig.cpp -o bin/rshell 
+
+ls:	src/ls.cpp
+	
+	$(compiler) $(flags) src/ls.cpp -o bin/ls
+
+cp:	src/cp.cpp
+	
+	$(compiler) $(flags) src/cp.cpp -o bin/cp
+
+clean:	
+	rm -rf bin
+
+
+/home/csmajs/jfan013/rshell$ touch file
+/home/csmajs/jfan013/rshell$ ls
+bin  file  LICENSE  Makefile  README.md  src  tests
+/home/csmajs/jfan013/rshell$ rm file
+/home/csmajs/jfan013/rshell$ # #Using CD t      cd to can               Changing direct tories with cd
+/home/csmajs/jfan013/rshell$ cd ..
+/home/csmajs/jfan013$ ls
+Desktop    Downloads  Music	Public	Templates  workspace
+Documents  firstrepo  Pictures	rshell	Videos
+/home/csmajs/jfan013$ cd rshell/src
+/home/csmajs/jfan013/rshell/src$ ls
+cp.cpp	ls.cpp	main.cpp  rshell.cpp  rsig.cpp	Timer.h
+/home/csmajs/jfan013/rshell/src$ #NOTE: cd is not made to work with multipla          h multiple parameters
+/home/csmajs/jfan013/rshell/src$ cd ..
+/home/csmajs/jfan013/rshell$ ls
+bin  LICENSE  Makefile	README.md  src	tests
+/home/csmajs/jfan013/rshell$ #Using Ctrl C to       -C to break out of functions         commands
+/home/csmajs/jfan013/rshell$ cat
+hello
+hello
+goodb     world
+world
+goodbye
+goodbye
+^C/home/csmajs/jfan013/rshell$ grep cs100
+je  hello
+goodbye
+cs100
+cs100
+^C/home/csmajs/jfan013/rshell$ tr a-  A a-Z   z A-Z
+hello
+HELLO
+goodbye
+GOODBYE
+^C/home/csmajs/jfan013/rshell$ tee
+this is in          cs100 rocks!
+cs100 rocks!
+woohoo!
+woohoo!
+exi   ^C/home/csmajs/jfan013/rshell$ #Running a a shell inside of the sc hell
+/home/csmajs/jfan013/rshell$ bin/rshell
+Entering shell: 
+/home/csmajs/jfan013/rshell$ #Few test commands again
+/home/csmajs/jfan013/rshell$ ls
+a-z  A-Z  bin  LICENSE	Makefile  README.md  src  tests
+/home/csmajs/jfan013/rshell$ cat a-z
+hello
+xD
+/home/csmajs/jfan013/rshell$ #From file created during the d script
+/home/csmajs/jfan013/rshell$ rm a-z A-Z
+/home/csmajs/jfan013/rshell$ ls
+bin  LICENSE  Makefile	README.md  src	tests
+/home/csmajs/jfan013/rshell$ #testing make               mv bin bin1
+/home/csmajs/jfan013/rshell$ ls
+bin1  LICENSE  Makefile  README.md  src  tests
+/home/csmajs/jfan013/rshell$ #Tesg ting Make    make
+/home/csmajs/jfan013/rshell$ make
+[ ! -d bin ]
+mkdir -p bin;
+g++ -Wall -Werror -ansi -pedantic src/rsig.cpp -o bin/rshell 
+g++ -Wall -Werror -ansi -pedantic src/ls.cpp -o bin/ls
+g++ -Wall -Werror -ansi -pedantic src/cp.cpp -o bin/cp
+/home/csmajs/jfan013/rshell$ ls
+bin  bin1  LICENSE  Makefile  README.md  src  tests
+/home/csmajs/jfan013/rshell$ #t Testing clean
+/home/csmajs/jfan013/rshell$ make clean
+rm -rf bin
+/home/csmajs/jfan013/rshell$ ls
+bin1  LICENSE  Makefile  README.md  src  tests
+/home/csmajs/jfan013/rshell$ cd sr     #Testing cd             cd src
+/home/csmajs/jfan013/rshell/src$ #Testing g++
+/home/csmajs/jfan013/rshell/src$ g+  ls
+cp.cpp	ls.cpp	main.cpp  rshell.cpp  rsig.cpp	Timer.h
+/home/csmajs/jfan013/rshell/src$ g++ rsig.cpp
+/home/csmajs/jfan013/rshell/src$ ls
+a.out  cp.cpp  ls.cpp  main.cpp  rshell.cpp  rsig.cpp  Timer.h
+/home/csmajs/jfan013/rshell/src$ rm a.out
+/home/csmajs/jfan013/rshell/src$ cd ..
+/home/csmajs/jfan013/rshell$ x #Testing Ctrl C inside a process
+/home/csmajs/jfan013/rshell$ ^C^C^C^C^C^C^Cecho hello
+hello
+/home/csmajs/jfan013/rshell$ exit
+Exiting shell
+/home/csmajs/jfan013/rshell$ exit
+Exiting shell
+~/rshell
+jfan013@hammer $ exit
+exit
+
+Script done on Sat 06 Dec 2014 12:23:08 AM PST

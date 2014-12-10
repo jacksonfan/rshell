@@ -10,13 +10,13 @@ bin:
 	[ ! -d bin ]
 	mkdir -p bin;
 
-rshell: src/rsig.cpp
+rshell: src/rshell2.cpp
 	
-	$(compiler) $(flags) src/rsig.cpp -o bin/rshell 
+	$(compiler) $(flags) src/rshell2.cpp -o bin/rshell 
 
-ls:	src/ls.cpp
+ls:	src/ls2.cpp
 	
-	$(compiler) $(flags) src/ls.cpp -o bin/ls
+	$(compiler) $(flags) src/ls2.cpp -o bin/ls
 
 cp:	src/cp.cpp
 	
